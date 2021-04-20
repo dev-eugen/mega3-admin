@@ -3,13 +3,17 @@ import App from "./App.vue"
 import router from "./router"
 import store from "./store"
 import "./assets/tailwind.css"
-import * as icons from "@heroicons/vue/outline"
-import * as mega3ui from "mega3ui"
+import * as icons from '@heroicons/vue/outline'
 import * as tailwindUI from "@headlessui/vue"
 import Navigator from "@/components/BaseNavigator.vue"
 
 const app = createApp(App)
 
+Object.entries(icons).forEach(([componentName, component]) => {
+  if (componentName !== 'default') {
+    app.component(String(componentName), component)
+  }
+})
 
 
 app.directive("click-outside", {
@@ -28,11 +32,8 @@ app.directive("click-outside", {
   },
 })
 
-Object.entries(icons).forEach(([componentName, component]) => {
-  if (componentName !== "default") {
-    app.component(String(componentName), component)
-  }
-})
+//console.log(icons)
+
 
 Object.entries(tailwindUI).forEach(([componentName, component]) => {
   if (componentName !== "default") {
@@ -40,11 +41,6 @@ Object.entries(tailwindUI).forEach(([componentName, component]) => {
   }
 })
 
-Object.entries(mega3ui).forEach(([componentName, component]) => {
-  if (componentName !== "default") {
-    app.component(String(componentName), component)
-  }
-})
 
 app.component('Navigator', Navigator)
 app.use(store)

@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import menu from "@/layouts/Menu.vue"
 const routes = [
   {
     path: '/',
     name: 'home',
     component: () => import("@/views/Dashboard.vue"),
     meta: {
-      layout: menu,
+      layout: 'menu',
     }, 
   },
   {
@@ -14,7 +13,7 @@ const routes = [
     name: 'productnew',
     component: () => import("@/views/Products/NewProduct.vue"),
     meta: {
-      layout: menu,
+      layout: 'menu',
     }, 
   },
   {
@@ -22,15 +21,23 @@ const routes = [
     name: 'products',
     component: () => import("@/views/Products/Products.vue"),
     meta: {
-      layout: menu,
+      layout: 'menu',
     }, 
   },
   {
-    path: '/settings',
-    name: 'settings',
-    component: () => import("@/views/Settings.vue"),
+    path: '/profile',
+    name: 'userprofile',
+    component: () => import("@/views/User/Profile.vue"),
     meta: {
-      layout: menu,
+      layout: 'setting',
+    }, 
+  },
+  {
+    path: '/setting',
+    name: 'usersettings',
+    component: () => import("@/views/User/Settings.vue"),
+    meta: {
+      layout: 'setting',
     }, 
   },
   {
@@ -38,7 +45,7 @@ const routes = [
     name: 'signin',
     component: () => import("@/views/Signin.vue"),
     meta: {
-      layout: menu,
+      layout: 'empty',
     }, 
   }
 ]

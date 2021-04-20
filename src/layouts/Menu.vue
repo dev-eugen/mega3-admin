@@ -60,6 +60,7 @@
             <div class="mt-5 flex-1 h-0 overflow-y-auto">
               <nav class="px-2">
                 <div class="space-y-1">
+ 
                   <a
                     v-for="item in navigation"
                     :key="item.name"
@@ -82,6 +83,9 @@
                       ]"
                       aria-hidden="true"
                     />
+                  <a v-for="(item, i) in navigation" @click="go(item.href, i) "  :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50', 'group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
+                    <component :is="item.icon" :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-3 h-6 w-6']" aria-hidden="true" />
+ 
                     {{ item.name }}
                   </a>
                 </div>
@@ -188,6 +192,8 @@
                       ]"
                       >View profile</a
                     >
+                  <MenuItem v-slot="{ active }" @click="$router.push({ name: 'userprofile' })">
+                    <a  :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">View profile</a>
                   </MenuItem>
                   <MenuItem v-slot="{ active }">
                     <a
@@ -294,6 +300,8 @@
                   ]"
                   aria-hidden="true"
                 />
+              <a v-for="(item, i) in navigation" :key="item.name" @click="go(item.href, i) " :class="[item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
+                <component :is="item.icon" :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-3 h-6 w-6']" aria-hidden="true" />
                 {{ item.name }}
               </a>
             </div>
@@ -496,6 +504,9 @@ import {
   XIcon,
 } from "@heroicons/vue/outline";
 import { useRoute } from "vue-router";
+import { ref, reactive } from 'vue'
+import { useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 const pages = [
   { name: "Projects", href: "#", current: false },
@@ -573,8 +584,26 @@ export default {
       },
       { name: "Customers", href: "#", icon: UserIcon, current: false },
     ];
+    const router = useRouter()
+    const sidebarOpen = ref(false)
+    const route = useRoute()
+    const navigation = ref([
+        { name: 'Home', href: 'home', icon: 'HomeIcon', current: route.name.slice(0, 4) == 'home' },
+        { name: 'Orders', href: '#', icon: 'InboxInIcon', current: route.name.slice(0, 5) == 'order' },
+        { name: 'Products', href: 'products', icon: 'TagIcon', current: route.name.slice(0, 7) == 'product' },
+        { name: 'Customers', href: '#', icon: 'UserIcon', current: false },
+    ])
+
+    const go = (route, i) => {
+        router.push({ name: route }); 
+        navigation.value.forEach(e => {
+           e.current = false
+        });
+        navigation.value[i].current = true
+    }
 
     return {
+      go,
       navigation,
       shops,
       pages,
