@@ -1,6 +1,9 @@
 <template>
     <div>
         <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-3 sm:px-6">
+                Price
+            </div>
             <div class="px-4 py-5 sm:p-6">
                 <label for="company_website" class="block text-sm font-medium text-gray-700">
                     Price
@@ -33,18 +36,25 @@
 </template>
 
 <script>
-import {watchEffect, computed} from 'vue'
+    import errors from "@/api/InputErrors.js"
+    import {
+        watchEffect,
+        computed
+    } from 'vue'
     export default {
         props: {
             price: Number,
             amount: Number
         },
         setup(props, { emit }) {
-            const NumCheck_color = (str) => String(Number(str)) == 'NaN' ? 'red' : 'indigo'
+            const { NumCheck_color } = errors()
             watchEffect(() => emit('update:price', props.price))
             watchEffect(() => emit('update:amount', props.amount))
 
-            return {  NumCheck_color }
+            return {
+                NumCheck_color
+                
+            }
         }
     }
 </script>
