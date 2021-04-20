@@ -34,7 +34,7 @@
         <div class="mt-8">
           <div>
             <div>
-              <p class="text-sm font-medium text-green-500">Sign in with</p>
+              <p class="text-sm font-medium text-green-700">Sign in with</p>
 
               <div class="mt-1 grid grid-cols-3 gap-3">
                 <div>
