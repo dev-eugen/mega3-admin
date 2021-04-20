@@ -32,7 +32,8 @@ const routes = [
     meta: {
       layout: menu,
     }, 
-  }
+  },
+ 
 ]
 
 const router = createRouter({
