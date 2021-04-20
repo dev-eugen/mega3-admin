@@ -40,7 +40,17 @@ const routes = [
       layout: 'setting',
     }, 
   },
+
   {
+    path: '/account',
+    name: 'useraccount',
+    component: () => import("@/views/User/account.vue"),
+    meta: {
+      layout: 'setting',
+    }, 
+  },
+  {
+
     path: '/signin',
     name: 'signin',
     component: () => import("@/views/Signin.vue"),
