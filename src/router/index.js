@@ -33,7 +33,14 @@ const routes = [
       layout: menu,
     }, 
   },
- 
+  {
+    path: '/signin',
+    name: 'signin',
+    component: () => import("@/views/Signin.vue"),
+    meta: {
+      layout: menu,
+    }, 
+  }
 ]
 
 const router = createRouter({
