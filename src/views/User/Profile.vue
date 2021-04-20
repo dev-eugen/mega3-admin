@@ -1,14 +1,11 @@
 <template>
-    <div class="m-0">
-        <slot></slot>
+    <div>
+        Profile
     </div>
 </template>
 
-<script>
+<script setup>
 
-export default {
-    
-}
 </script>
 
 <style lang="scss" scoped>

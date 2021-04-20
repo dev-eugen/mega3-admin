@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <component :is="layout">
+    <component :id="layout" :is="layout">
       <router-view />
     </component>
   </div>
@@ -8,12 +8,13 @@
 
 <script>
 
-const menu = () => import("@/layouts/Menu.vue")
-const Empty = () => import("@/layouts/Empty.vue")
+import menu from "@/layouts/Menu.vue"
+import empty from "@/layouts/Empty.vue"
+import setting from "@/layouts/Setting.vue"
 
 export default {
   components: {
-    menu, Empty
+    menu, empty, setting
   },
   computed: {
     layout() {

@@ -21,7 +21,7 @@
             <div class="mt-5 flex-1 h-0 overflow-y-auto">
               <nav class="px-2">
                 <div class="space-y-1">
-                  <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50', 'group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
+                  <a v-for="(item, i) in navigation" @click="go(item.href, i) "  :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50', 'group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
                     <component :is="item.icon" :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-3 h-6 w-6']" aria-hidden="true" />
                     {{ item.name }}
                   </a>
@@ -76,8 +76,8 @@
             <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
               <MenuItems class="z-10 mx-3 origin-top absolute right-0 left-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none">
                 <div class="py-1">
-                  <MenuItem v-slot="{ active }">
-                    <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">View profile</a>
+                  <MenuItem v-slot="{ active }" @click="$router.push({ name: 'userprofile' })">
+                    <a  :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">View profile</a>
                   </MenuItem>
                   <MenuItem v-slot="{ active }">
                     <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Settings</a>
@@ -115,7 +115,7 @@
           <!-- Navigation -->
           <nav class="px-3 mt-6">
             <div class="space-y-1">
-              <a v-for="item in navigation" :key="item.name" @click="$router.push({ name: item.href })" :class="[item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
+              <a v-for="(item, i) in navigation" :key="item.name" @click="go(item.href, i) " :class="[item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
                 <component :is="item.icon" :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-3 h-6 w-6']" aria-hidden="true" />
                 {{ item.name }}
               </a>
@@ -210,8 +210,8 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-import { TagIcon, HomeIcon, UserIcon, InboxInIcon, XIcon } from '@heroicons/vue/outline'
+import { ref, reactive } from 'vue'
+import { useRouter } from 'vue-router'
 import { useRoute } from 'vue-router'
 
 const pages = [
@@ -267,16 +267,26 @@ const pinnedProjects = projects.filter((project) => project.pinned)
 
 export default {
   setup(props, context) {
+    const router = useRouter()
     const sidebarOpen = ref(false)
     const route = useRoute()
-    const navigation = [
-        { name: 'Home', href: 'home', icon: HomeIcon, current: route.name.slice(0, 4) == 'home' },
-        { name: 'Orders', href: '#', icon: InboxInIcon, current: route.name.slice(0, 5) == 'order' },
-        { name: 'Products', href: 'products', icon: TagIcon, current: route.name.slice(0, 7) == 'product' },
-        { name: 'Customers', href: '#', icon: UserIcon, current: false },
-    ]
+    const navigation = ref([
+        { name: 'Home', href: 'home', icon: 'HomeIcon', current: route.name.slice(0, 4) == 'home' },
+        { name: 'Orders', href: '#', icon: 'InboxInIcon', current: route.name.slice(0, 5) == 'order' },
+        { name: 'Products', href: 'products', icon: 'TagIcon', current: route.name.slice(0, 7) == 'product' },
+        { name: 'Customers', href: '#', icon: 'UserIcon', current: false },
+    ])
+
+    const go = (route, i) => {
+        router.push({ name: route }); 
+        navigation.value.forEach(e => {
+           e.current = false
+        });
+        navigation.value[i].current = true
+    }
 
     return {
+      go,
       navigation,
       shops,
       pages,
