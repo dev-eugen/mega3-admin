@@ -3,18 +3,18 @@
   <div>
     <Disclosure
       as="div"
-      class="relative bg-light-blue-700 pb-32 overflow-hidden"
+      class="relative bg-blue-700 pb-32 overflow-hidden"
       v-slot="{ open }"
     >
       <nav
         :class="[
-          open ? 'bg-light-blue-900' : 'bg-transparent',
+          open ? 'bg-blue-900' : 'bg-transparent',
           'relative z-10 border-b border-teal-500 border-opacity-25 lg:bg-transparent lg:border-none',
         ]"
       >
         <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div
-            class="relative h-16 flex items-center justify-between lg:border-b lg:border-light-blue-800"
+            class="relative h-16 flex items-center justify-between lg:border-b lg:border-blue-800"
           >
             <div class="px-2 flex items-center lg:px-0">
               <div class="flex-shrink-0">
@@ -33,7 +33,7 @@
                     :class="[
                       item.current
                         ? 'bg-black bg-opacity-25'
-                        : 'hover:bg-light-blue-800',
+                        : 'hover:bg-blue-800',
                       'rounded-md py-2 px-3 text-sm font-medium text-white',
                     ]"
                     >{{ item.name }}</a
@@ -45,7 +45,7 @@
               <div class="max-w-lg w-full lg:max-w-xs">
                 <label for="search" class="sr-only">Search</label>
                 <div
-                  class="relative text-light-blue-100 focus-within:text-gray-400"
+                  class="relative text-blue-100 focus-within:text-gray-400"
                 >
                   <div
                     class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center"
@@ -58,7 +58,7 @@
                   <input
                     id="search"
                     name="search"
-                    class="block w-full bg-light-blue-700 bg-opacity-50 py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 placeholder-light-blue-100 focus:outline-none focus:bg-white focus:ring-white focus:border-white focus:placeholder-gray-500 focus:text-gray-900 sm:text-sm"
+                    class="block w-full bg-blue-700 bg-opacity-50 py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 placeholder-blue-100 focus:outline-none focus:bg-white focus:ring-white focus:border-white focus:placeholder-gray-500 focus:text-gray-900 sm:text-sm"
                     placeholder="Search"
                     type="search"
                   />
@@ -68,7 +68,7 @@
             <div class="flex lg:hidden">
               <!-- Mobile menu button -->
               <DisclosureButton
-                class="p-2 rounded-md inline-flex items-center justify-center text-light-blue-200 hover:text-white hover:bg-light-blue-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                class="p-2 rounded-md inline-flex items-center justify-center text-blue-200 hover:text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               >
                 <span class="sr-only">Open main menu</span>
                 <MenuIcon
@@ -86,7 +86,7 @@
             <div class="hidden lg:block lg:ml-4">
               <div class="flex items-center">
                 <button
-                  class="flex-shrink-0 rounded-full p-1 text-light-blue-200 hover:bg-light-blue-800 hover:text-white focus:outline-none focus:bg-light-blue-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-light-blue-900 focus:ring-white"
+                  class="flex-shrink-0 rounded-full p-1 text-blue-200 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-900 focus:ring-white"
                 >
                   <span class="sr-only">View notifications</span>
                   <BellIcon class="h-6 w-6" aria-hidden="true" />
@@ -96,7 +96,7 @@
                 <Menu as="div" class="relative flex-shrink-0 ml-4">
                   <div>
                     <MenuButton
-                      class="rounded-full flex text-sm text-white focus:outline-none focus:bg-light-blue-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-light-blue-900 focus:ring-white"
+                      class="rounded-full flex text-sm text-white focus:outline-none focus:bg-blue-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-900 focus:ring-white"
                     >
                       <span class="sr-only">Open user menu</span>
                       <img
@@ -139,7 +139,7 @@
           </div>
         </div>
 
-        <DisclosurePanel class="bg-light-blue-900 lg:hidden">
+        <DisclosurePanel class="bg-blue-900 lg:hidden">
           <div class="pt-2 pb-3 px-2 space-y-1">
             <a
               v-for="item in navigation"
@@ -148,13 +148,13 @@
               :class="[
                 item.current
                   ? 'bg-black bg-opacity-25'
-                  : 'hover:bg-light-blue-800',
+                  : 'hover:bg-blue-800',
                 'block rounded-md py-2 px-3 text-base font-medium text-white',
               ]"
               >{{ item.name }}</a
             >
           </div>
-          <div class="pt-4 pb-3 border-t border-light-blue-800">
+          <div class="pt-4 pb-3 border-t border-blue-800">
             <div class="flex items-center px-4">
               <div class="flex-shrink-0">
                 <img
@@ -167,12 +167,12 @@
                 <div class="text-base font-medium text-white">
                   {{ user.name }}
                 </div>
-                <div class="text-sm font-medium text-light-blue-200">
+                <div class="text-sm font-medium text-blue-200">
                   {{ user.email }}
                 </div>
               </div>
               <button
-                class="ml-auto flex-shrink-0 rounded-full p-1 text-light-blue-200 hover:bg-light-blue-800 hover:text-white focus:outline-none focus:bg-light-blue-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-light-blue-900 focus:ring-white"
+                class="ml-auto flex-shrink-0 rounded-full p-1 text-blue-200 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-900 focus:ring-white"
               >
                 <span class="sr-only">View notifications</span>
                 <BellIcon class="h-6 w-6" aria-hidden="true" />
@@ -183,7 +183,7 @@
                 v-for="item in userNavigation"
                 :key="item.name"
                 :href="item.href"
-                class="block rounded-md py-2 px-3 text-base font-medium text-light-blue-200 hover:text-white hover:bg-light-blue-800"
+                class="block rounded-md py-2 px-3 text-base font-medium text-blue-200 hover:text-white hover:bg-blue-800"
                 >{{ item.name }}</a
               >
             </div>
@@ -197,7 +197,7 @@
         ]"
         aria-hidden="true"
       >
-        <div class="flex-grow bg-light-blue-900 bg-opacity-75" />
+        <div class="flex-grow bg-blue-900 bg-opacity-75" />
         <svg
           class="flex-shrink-0"
           width="1750"
@@ -216,7 +216,7 @@
             fill="#0c4a6e"
           />
         </svg>
-        <div class="flex-grow bg-light-blue-800 bg-opacity-75" />
+        <div class="flex-grow bg-blue-800 bg-opacity-75" />
       </div>
       <header class="relative py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -238,12 +238,12 @@
                    @click="go(item.href, i)"
                   :key="item.name"
                   
-                  :href="item.href" 
+                  
                 
                   :class="[
                     item.current
-                      ? 'bg-teal-50 border-teal-500 text-teal-700 hover:bg-teal-50 hover:text-teal-700'
-                      : 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900',
+                      ? 'bg-blue-100 border-blue-500 text-blue-900 hover:bg-blue-50 hover:text-blue-700'
+                      : 'border-transparent text-gray-900 hover:bg-gray-100 hover:text-gray-900',
                     'group border-l-4 px-3 py-2 flex items-center text-sm font-medium',
                   ]"
                   :aria-current="item.current ? 'page' : undefined"
@@ -351,42 +351,42 @@ export default {
     const router = useRouter();
     const sidebarOpen = ref(false);
     const route = useRoute();
-    const subNavigation = ref([
+    const subNavigation = ref ([
       {
         name: "Profile",
         href: "profile",
         icon: "UserCircleIcon",
-        current: route.name.slice(0, 7) == 'profile',
+        current: route.name.slice(0, 7) == "profile",
       },
       {
         name: "Account",
         href: "account",
         icon: "CogIcon",
-        current: route.name.slice(0, 7) == 'account',
+        current: route.name.slice(0, 7) == "account",
       },
       {
         name: "Password",
         href: "products",
         icon: "KeyIcon",
-        current: route.name.slice(0, 5) == 'product',
+        current: route.name.slice(0, 5) == "password",
       },
       {
         name: "Notifications",
-        href: "#",
+        href: "notification",
         icon: "ViewGridAddIcon",
-        current: route.name.slice(0, 9) == 'product',
+        current: route.name.slice(0, 9) == "notification",
       },
       {
         name: "Billing",
         href: "#",
         icon: CreditCardIcon,
-        current: route.name.slice(0, 8) == 'product',
+        current: route.name.slice(0, 8) == "billing",
       },
       {
         name: "Integrations",
         href: "#",
         icon: ViewGridAddIcon,
-        current: route.name.slice(0, 3) == 'product',
+        current: route.name.slice(0, 3) == "integrations",
       },
       
     ])

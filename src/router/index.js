@@ -26,7 +26,7 @@ const routes = [
   },
   {
     path: '/profile',
-    name: 'userprofile',
+    name: 'profile',
     component: () => import("@/views/User/Profile.vue"),
     meta: {
       layout: 'setting',
@@ -43,7 +43,7 @@ const routes = [
 
   {
     path: '/account',
-    name: 'useraccount',
+    name: 'account',
     component: () => import("@/views/User/account.vue"),
     meta: {
       layout: 'setting',
@@ -56,6 +56,15 @@ const routes = [
     component: () => import("@/views/Signin.vue"),
     meta: {
       layout: 'empty',
+    }, 
+  },
+  {
+
+    path: '/notification',
+    name: 'notification',
+    component: () => import("@/views/User/Notification.vue"),
+    meta: {
+      layout: 'setting',
     }, 
   }
 ]
