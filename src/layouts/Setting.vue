@@ -4,14 +4,17 @@
     <Disclosure
       as="div"
       class="relative bg-blue-700 pb-32 overflow-hidden"
+      
       v-slot="{ open }"
     >
+    
       <nav
         :class="[
           open ? 'bg-blue-900' : 'bg-transparent',
           'relative z-10 border-b border-teal-500 border-opacity-25 lg:bg-transparent lg:border-none',
         ]"
       >
+     
         <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div
             class="relative h-16 flex items-center justify-between lg:border-b lg:border-blue-800"
@@ -20,8 +23,8 @@
               <div class="flex-shrink-0">
                 <img
                   class="block h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-mark-teal-400.svg"
-                  alt="Workflow"
+                  src="https://mega3-admin-dev-eugen.vercel.app/img/logo_header.png"
+                  alt="mega3"
                 />
               </div>
               <div class="hidden lg:block lg:ml-6 lg:space-x-4">
@@ -366,7 +369,7 @@ export default {
       },
       {
         name: "Password",
-        href: "products",
+        href: "password",
         icon: "KeyIcon",
         current: route.name.slice(0, 5) == "password",
       },

@@ -182,7 +182,7 @@
                 <div class="py-1">
                   <MenuItem
                     v-slot="{ active }"
-                    @click="$router.push({ name: 'userprofile' })"
+                    @click="$router.push({ name: 'profile' })"
                   >
                     <a
                       :class="[

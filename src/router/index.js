@@ -66,6 +66,15 @@ const routes = [
     meta: {
       layout: 'setting',
     }, 
+  },
+  {
+
+    path: '/password',
+    name: 'password',
+    component: () => import("@/views/User/Password.vue"),
+    meta: {
+      layout: 'setting',
+    }, 
   }
 ]
 
