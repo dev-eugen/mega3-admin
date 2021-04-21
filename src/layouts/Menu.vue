@@ -199,7 +199,7 @@
           </div>
         </div>
       </div>
-      <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
+      <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none bg-gray-200">
         <!-- Page title & actions -->
         <slot></slot>
 
