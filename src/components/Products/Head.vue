@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="bg-white overflow-hidden shadow rounded-lg mt-2">
             <div class="px-4 py-5 sm:p-6">
                 <div>
                     <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="bg-white overflow-hidden shadow rounded-lg mt-2">
             <div class="px-4 py-5 sm:p-6">
                 <quillEditor v-model:value="description" />
             </div>
