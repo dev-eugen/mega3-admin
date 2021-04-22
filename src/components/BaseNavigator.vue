@@ -8,7 +8,7 @@
     </div>
     <div class="col-span-2 flex flex-row justify-end sm:mt-0 sm:ml-4">
       <button v-for="act in actions" :key="act.title" @click="$emit(act.emit)" type="button" 
-        :class="`inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-white bg-${act.color}  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-${color} sm:order-0 ml-3`">
+        :class="`inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-white bg-${act.color}  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-${act.color} sm:order-0 ml-3`">
         {{ act.title }}
       </button>
     </div>
