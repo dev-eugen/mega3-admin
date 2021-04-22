@@ -78,13 +78,22 @@ const routes = [
   },
   {
 
+    path: '/social',
+    name: 'social',
+    component: () => import("@/views/User/Social.vue"),
+    meta: {
+      layout: 'setting',
+    }, 
+  },
+  {
+
     path: '/billing',
     name: 'billing',
     component: () => import("@/views/User/Billing.vue"),
     meta: {
       layout: 'setting',
     }, 
-  }
+  },
 ]
 
 const router = createRouter({
