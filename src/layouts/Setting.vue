@@ -382,7 +382,7 @@ export default {
       },
       {
         name: "Billing",
-        href: "#",
+        href: "billing",
         icon: CreditCardIcon,
         current: route.name.slice(0, 8) == "billing",
       },

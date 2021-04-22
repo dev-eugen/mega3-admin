@@ -75,6 +75,15 @@ const routes = [
     meta: {
       layout: 'setting',
     }, 
+  },
+  {
+
+    path: '/billing',
+    name: 'billing',
+    component: () => import("@/views/User/Billing.vue"),
+    meta: {
+      layout: 'setting',
+    }, 
   }
 ]
 
