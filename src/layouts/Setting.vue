@@ -327,6 +327,7 @@ const userNavigation = [
 ];
 
 export default {
+  name: 'settings_1',
   components: {
     Disclosure,
     DisclosureButton,

@@ -548,6 +548,7 @@ const projects = [
 const pinnedProjects = projects.filter((project) => project.pinned);
 
 export default {
+  name: 'menu_1',
   setup(props, context) {
     const router = useRouter();
     const sidebarOpen = ref(false);
