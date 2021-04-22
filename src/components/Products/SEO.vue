@@ -49,7 +49,7 @@ import errors from "@/api/InputErrors.js"
 
             const { SizeCheck_color } = errors()
 
-            return { SizeCheck_color }
+            return { SizeCheck_color  }
         }
     }
 </script>
