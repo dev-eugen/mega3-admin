@@ -562,7 +562,7 @@ export default {
       },
       {
         name: "Orders",
-        href: "#",
+        href: "orders",
         icon: "InboxInIcon",
         current: route.name.slice(0, 5) == "order",
       },
