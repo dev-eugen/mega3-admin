@@ -15,16 +15,18 @@
   </div>
 </template>
 
-<script setup="props">
-  import {
-    defineProps
-  } from 'vue'
-
-  defineProps({
+<script>
+export default {
+  props: {
     title: String,
     actions: Array
-  })
+  },
+  setup(props) {
+    console.log(123)
+  }
+}
 </script>
+
 
 <style lang="scss" scoped>
 
