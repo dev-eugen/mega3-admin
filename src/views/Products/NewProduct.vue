@@ -1,8 +1,8 @@
 <template>
     <Navigator title="Product"
         :actions="[{ title: 'Back', emit: 'back', color: 'red-500' }, { title: 'Save', emit: 'save', color: 'green-500' }]" />
-    <div class="lg:mx-6 lg:my-3 grid grid-cols-3 gap-4">
-        <div class="lg:col-span-2 col-span-3">
+    <div class="lg:mx-6 lg:my-3 grid grid-cols-12 gap-4">
+        <div class="lg:col-span-7 col-span-12">
 
             <Head v-model:title="product.title" v-model:description="product.descriptionHtml" />
             <Price v-model:price="product.variants[0].price" v-model:amount="product.variants[0].inventory.amount" />
@@ -11,9 +11,12 @@
                 v-model:avaliable="product.variants[0].inventory.avaliable"
                 v-model:inventoryPolicy="product.variants[0].inventory.inventoryPolicy" />
             <!-- <Shipping/> -->
-            <SEO v-model:title="product.variants[0].seo.title" v-model:description="product.variants[0].seo.description" v-model:p_title="product.title" v-model:p_description="product.descriptionHtml" />
+            <SEO v-model:title="product.variants[0].seo.title" v-model:description="product.variants[0].seo.description"
+                v-model:p_title="product.title" v-model:p_description="product.descriptionHtml" />
         </div>
-        <div>{{product.title}} {{product.descriptionHtml }}</div>
+        <div class="lg:col-span-5 col-span-12">
+            <Status  />
+        </div>
     </div>
 </template>
 
@@ -23,6 +26,7 @@
     import Inventory from '@/components/Products/Inventory.vue'
     import Shipping from '@/components/Products/Shipping.vue'
     import SEO from '@/components/Products/SEO.vue'
+    import Status from '@/components/Products/Status.vue'
     import {
         reactive
     } from 'vue'
@@ -32,12 +36,14 @@
             Price,
             Inventory,
             Shipping,
-            SEO
+            SEO,
+            Status
         },
         setup() {
             const product = reactive({
                 title: '',
                 descriptionHtml: '',
+                status: '',
                 variants: [{
                         price: 0.00,
                         sku: '',

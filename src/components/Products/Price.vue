@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="bg-white overflow-hidden shadow rounded-lg mt-2">
+        <div class="bg-white overflow-hidden shadow rounded-lg mb-2">
             <div class="px-4 py-3 sm:px-6">
                 Price
             </div>

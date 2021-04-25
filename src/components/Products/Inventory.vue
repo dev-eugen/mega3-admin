@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white overflow-hidden shadow rounded-lg mt-2">
+    <div class="bg-white overflow-hidden shadow rounded-lg mb-2">
         <div class="px-4 py-5 sm:px-6">
             Inventory
         </div>
