@@ -344,6 +344,7 @@ export default {
     MenuIcon,
     SearchIcon,
     XIcon,
+    
   },
   setup(props, context) {
     const open = ref(false);
@@ -382,15 +383,15 @@ export default {
       },
       {
         name: "Billing",
-        href: "#",
+        href: "billing",
         icon: CreditCardIcon,
         current: route.name.slice(0, 8) == "billing",
       },
       {
-        name: "Integrations",
-        href: "#",
+        name: "Social",
+        href: "social",
         icon: ViewGridAddIcon,
-        current: route.name.slice(0, 3) == "integrations",
+        current: route.name.slice(0, 6) == "Social",
       },
       
     ])
