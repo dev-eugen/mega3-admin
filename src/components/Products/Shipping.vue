@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
-            <div class="px-4 py-5 sm:px-6">
+            <div class="pnl-itm">
                 Shipping
                 <SwitchGroup as="div" class="flex items-center mt-3">
                     <Switch :value="tracked" @click="() => { tracked = !tracked; $emit('update:tracked', tracked)}"

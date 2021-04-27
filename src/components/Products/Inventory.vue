@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white overflow-hidden shadow rounded-lg mb-2">
-        <div class="px-4 py-5 sm:px-6">
+        <div class="pnl-itm">
             Inventory
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:p-6 flex flex-col">

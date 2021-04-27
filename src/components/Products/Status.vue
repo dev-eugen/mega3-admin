@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-white overflow-hidden shadow rounded-lg mb-2 divide-y divide-gray-200 z-50 h-96">
-        <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+    <div class="pnl">
+        <div class="pnl-itm flex justify-between items-center">
             Product status
             <Listbox class="float-right" as="div" v-model="selected">
                 <ListboxLabel class="sr-only">
@@ -49,49 +49,6 @@
                     </transition>
                 </div>
             </Listbox>
-        </div>
-        <div class="px-4 py-5 sm:p-6 flex flex-col divide-y divide-gray-300">
-            <div class="pb-4">
-                <label for="email" class="block text-sm font-medium text-gray-700">Schedule Online Store
-                    availability</label>
-                <div class="mt-1">
-                    <input type="date" name="email" id="email"
-                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
-                </div>
-            </div>
-            <SwitchGroup as="div" class="flex items-center py-4">
-                <Switch :value="tracked" @click="() => { tracked = !tracked; $emit('update:tracked', tracked)}"
-                    :class="[tracked ? 'bg-indigo-600' : 'bg-gray-400', 'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500']">
-                    <span class="sr-only">Use setting</span>
-                    <span aria-hidden="true"
-                        :class="[tracked ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200']" />
-                </Switch>
-                <SwitchLabel as="span" class="ml-3">
-                    <span class="text-sm font-medium text-gray-700">Online Store</span>
-                </SwitchLabel>
-            </SwitchGroup>
-            <SwitchGroup as="div" class="flex items-center py-4">
-                    <Switch :value="tracked"  @click="() => { tracked = !tracked; $emit('update:tracked', tracked)}"
-                        :class="[tracked ? 'bg-indigo-600' : 'bg-gray-400', 'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500']">
-                        <span class="sr-only">Use setting</span>
-                        <span aria-hidden="true"
-                            :class="[tracked ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200']" />
-                    </Switch>
-                    <SwitchLabel as="span" class="ml-3">
-                        <span class="text-sm font-medium text-gray-700">Instagram</span>
-                    </SwitchLabel>
-                </SwitchGroup>
-                <SwitchGroup as="div" class="flex items-center py-4">
-                    <Switch :value="tracked"  @click="() => { tracked = !tracked; $emit('update:tracked', tracked)}"
-                        :class="[tracked ? 'bg-indigo-600' : 'bg-gray-400', 'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500']">
-                        <span class="sr-only">Use setting</span>
-                        <span aria-hidden="true"
-                            :class="[tracked ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200']" />
-                    </Switch>
-                    <SwitchLabel as="span" class="ml-3">
-                        <span class="text-sm font-medium text-gray-700">Prom</span>
-                    </SwitchLabel>
-                </SwitchGroup>
         </div>
     </div>
 </template>

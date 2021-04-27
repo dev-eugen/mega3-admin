@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="bg-white overflow-hidden shadow rounded-lg divide-y mb-2 divide-gray-200">
-            <div class="px-4 py-5 sm:px-6">
+        <div class="pnl">
+            <div class="pnl-itm">
                 Title
             </div>
-            <div class="px-4 py-5 sm:p-6">
+            <div class="pnl-itm">
                 <div>
                     <div class="mt-1">
                         <input type="text" name="title" id="title" :value="title"  @input="$emit('update:title', $event.target.value)"
@@ -17,11 +17,11 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white overflow-hidden shadow rounded-lg  mb-2 divide-y divide-gray-200">
-            <div class="px-4 py-5 sm:px-6">
+        <div class="pnl">
+            <div class="pnl-itm">
                 Description
             </div>
-            <div class="px-4 py-5 sm:p-6">
+            <div class="pnl-itm">
                 <quillEditor v-model:value="description" />
             </div>
         </div>

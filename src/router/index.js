@@ -59,7 +59,6 @@ const routes = [
     }, 
   },
   {
-
     path: '/notification',
     name: 'notification',
     component: () => import("@/views/User/Notification.vue"),
@@ -68,7 +67,6 @@ const routes = [
     }, 
   },
   {
-
     path: '/password',
     name: 'password',
     component: () => import("@/views/User/Password.vue"),
@@ -77,7 +75,6 @@ const routes = [
     }, 
   },
   {
-
     path: '/social',
     name: 'social',
     component: () => import("@/views/User/Social.vue"),
@@ -86,7 +83,6 @@ const routes = [
     }, 
   },
   {
-
     path: '/billing',
     name: 'billing',
     component: () => import("@/views/User/Billing.vue"),

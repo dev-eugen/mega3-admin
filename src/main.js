@@ -2,18 +2,13 @@ import { createApp } from "vue"
 import App from "./App.vue"
 import router from "./router"
 import store from "./store"
-import "./assets/tailwind.css"
+import "./assets/css/index.css"
 import * as icons from '@heroicons/vue/outline'
 import * as tailwindUI from "@headlessui/vue"
 import Navigator from "@/components/BaseNavigator.vue"
-
+import VueClipboard from 'vue3-clipboard'
 const app = createApp(App)
 
-Object.entries(icons).forEach(([componentName, component]) => {
-  if (componentName !== 'default') {
-    app.component(String(componentName), component)
-  }
-})
 
 
 app.directive("click-outside", {
@@ -32,7 +27,10 @@ app.directive("click-outside", {
   },
 })
 
-//console.log(icons)
+app.use(VueClipboard, {
+  autoSetContainer: true,
+  appendToBody: true,
+})
 
 
 Object.entries(tailwindUI).forEach(([componentName, component]) => {
@@ -40,6 +38,13 @@ Object.entries(tailwindUI).forEach(([componentName, component]) => {
     app.component(String(componentName), component)
   }
 })
+
+Object.entries(icons).forEach(([componentName, component]) => {
+  if (componentName !== 'default') {
+    app.component(String(componentName), component)
+  }
+})
+
 
 
 app.component('Navigator', Navigator)
