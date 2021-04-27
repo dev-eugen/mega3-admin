@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <form class="divide-y divide-gray-200 lg:col-span-9" action="#" method="POST">
     <!-- Profile section -->
     <div class="py-6 px-4 sm:p-6 lg:pb-8">
@@ -164,6 +165,9 @@
               </div>
             </form>
     
+=======
+  
+>>>>>>> 9514535ca9e7a35796a6dd47968cfb8549bc0258
 </template>
 
 <script >
