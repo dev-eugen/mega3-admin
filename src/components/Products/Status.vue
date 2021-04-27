@@ -1,10 +1,10 @@
 <template>
     <div class="panel">
         <div class="panel-item flex justify-between items-center">
-            Product status
+            Статус продукта
             <Listbox class="float-right" as="div" v-model="selected">
                 <ListboxLabel class="sr-only">
-                    Change published status
+                    Изменить опубликованный статус
                 </ListboxLabel>
                 <div class="relative">
                     <div class="inline-flex shadow-sm rounded-md divide-x divide-indigo-600">
@@ -16,7 +16,6 @@
                             </div>
                             <ListboxButton
                                 class="relative inline-flex items-center bg-indigo-500 p-2 rounded-l-none rounded-r-md text-sm font-medium text-white hover:bg-indigo-600 focus:outline-none focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
-                                <span class="sr-only">Change published status</span>
                                 <ChevronDownIcon class="h-5 w-5 text-white" aria-hidden="true" />
                             </ListboxButton>
                         </div>
@@ -58,18 +57,18 @@
         ref
     } from 'vue'
     const publishingOptions = [{
-            title: 'Active',
-            description: 'This product will be available to all sales channels.',
+            title: 'Активный',
+            description: 'Этот товар будет доступен для всех каналов продаж.',
             current: true
         },
         {
-            title: 'Draft',
-            description: 'This product will be hidden from all sales channels.',
+            title: 'Черновик',
+            description: 'Этот товар не будет доступен для всех каналов продаж.',
             current: false
         },
         {
-            title: 'Arhive',
-            description: 'This product will be hidden from all sales channels.',
+            title: 'Архивный',
+            description: 'Этот товар не будет доступен для всех каналов продаж.',
             current: false
         },
     ]

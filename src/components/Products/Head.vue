@@ -2,14 +2,14 @@
     <div>
         <div class="panel">
             <div class="panel-item">
-                Title
+                Название
             </div>
             <div class="panel-item">
                 <div>
                     <div class="mt-1">
-                        <input type="text" :value="title"  @input="$emit('update:title', $event.target.value)"  class="input"  placeholder="Title of product"/>
+                        <input type="text" :value="title"  @input="$emit('update:title', $event.target.value)"  class="input"  placeholder="Рубашка с подлокотником..."/>
                     </div>
-                    <p class="mt-2 text-sm text-red-500" id="title-description">
+                    <p class="mt-2 text-sm text-red-500">
                         {{ error }}
                     </p>
                 </div>
@@ -17,10 +17,10 @@
         </div>
         <div class="panel">
             <div class="panel-item">
-                Description
+                Описание
             </div>
             <div class="panel-item">
-                <quillEditor v-model:value="description" />
+                <quillEditor v-model:value="description"  :options="{ placeholder: 'Изготовлен из качественного материал..' }"/>
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
         setup(props, {
             emit
         }) {
-            const error = computed(() => props.title.length > 70 ? "Max length 70" : null)
+            const error = computed(() => props.title.length > 70 ? "Максимум 70 символов" : null)
             watchEffect(() => emit('update:description', props.description))
             return {
                 error

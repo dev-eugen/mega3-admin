@@ -2,11 +2,11 @@
     <div>
         <div class="panel">
             <div class="panel-item">
-                Price
+                Цена
             </div>
             <div class="panel-item">
                 <label class="label">
-                    Price
+                    Цена
                 </label>
                 <div class="mt-1 mb-2 flex rounded-md shadow-sm">
                     <span  class="input-append-span">
@@ -18,7 +18,7 @@
                 </div>
 
                 <label class="label">
-                    Cost per item
+                    Себестоимость
                 </label>
                 <div class="input-append">
                     <span  class="input-append-span">
