@@ -394,6 +394,7 @@ export default {
         current: route.name.slice(0, 6) == "Social",
       },
       
+      
     ])
 
     const go = (route, i) => {
