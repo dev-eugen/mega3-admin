@@ -5,7 +5,7 @@
             <p class="m-1 text-xs">Add a description to see how this product might appear in a search engine listing</p>
 
         </div>
-        <div class="px-4 py-5 sm:p-6 flex flex-col">
+        <div class="panel-item flex flex-col">
             <div class="mb-3">
                 <label class="label">Page title</label>
                 <div class="mt-1">

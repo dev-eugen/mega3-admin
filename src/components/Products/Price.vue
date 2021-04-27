@@ -4,7 +4,7 @@
             <div class="panel-item">
                 Price
             </div>
-            <div class="px-4 py-5 sm:p-6">
+            <div class="panel-item">
                 <label class="label">
                     Price
                 </label>

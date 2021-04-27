@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
+        <div class="panel">
             <div class="panel-item">
                 Shipping
                 <SwitchGroup as="div" class="flex items-center mt-3">
@@ -15,7 +15,7 @@
                     </SwitchLabel>
                 </SwitchGroup>
             </div>
-            <div class="px-4 py-5 sm:p-6">
+            <div class="panel-item">
                 <p class="block text-xs font-bold text-gray-900">WEIGHT</p>
                 <p class="block text-xs font-medium text-gray-700 my-2">Used to calculate shipping rates at checkout and
                     label prices during fulfillment.</p>
