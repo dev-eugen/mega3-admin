@@ -27,7 +27,7 @@
         <div class="col-span-12 sm:col-span-6">
           <label
             for="first_name"
-            class="block text-sm font-medium text-gray-700"
+            class="label"
             >Numder</label
           >
           <div class="flex">
@@ -52,7 +52,7 @@
         </div>
 
         <div class="col-span-12 sm:col-span-6 md:mt-10">
-          <label for="last_name" class="block text-sm font-medium text-gray-700"
+          <label for="last_name" class="label"
             >The card is valid until</label
           >
           <input
@@ -66,7 +66,7 @@
         </div>
 
         <div class="col-span-4">
-          <label for="url" class="block text-sm font-medium text-gray-700"
+          <label for="url" class="label"
             >CVC
           </label>
           <input

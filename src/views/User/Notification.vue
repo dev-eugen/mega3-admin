@@ -52,19 +52,19 @@
                 <div class="flex items-center">
                   <input id="push_everything" name="push_notifications" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
                   <label for="push_everything" class="ml-3">
-                    <span class="block text-sm font-medium text-gray-700">Everything</span>
+                    <span class="label">Everything</span>
                   </label>
                 </div>
                 <div class="flex items-center">
                   <input id="push_email" name="push_notifications" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
                   <label for="push_email" class="ml-3">
-                    <span class="block text-sm font-medium text-gray-700">Same as email</span>
+                    <span class="label">Same as email</span>
                   </label>
                 </div>
                 <div class="flex items-center">
                   <input id="push_nothing" name="push_notifications" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
                   <label for="push_nothing" class="ml-3">
-                    <span class="block text-sm font-medium text-gray-700">No push notifications</span>
+                    <span class="label">No push notifications</span>
                   </label>
                 </div>
               </div>

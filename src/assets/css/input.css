@@ -1,0 +1,19 @@
+.input{
+    @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md
+}
+
+.label{
+    @apply block text-sm font-medium text-gray-700
+}
+
+.input-append{
+    @apply mt-1 flex rounded-md shadow-sm
+}
+
+.input-append-span{
+    @apply inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
+}
+
+.textarea{
+    @apply  shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md
+}

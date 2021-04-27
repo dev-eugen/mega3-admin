@@ -1,15 +1,13 @@
 <template>
     <div>
-        <div class="pnl">
-            <div class="pnl-itm">
+        <div class="panel">
+            <div class="panel-item">
                 Title
             </div>
-            <div class="pnl-itm">
+            <div class="panel-item">
                 <div>
                     <div class="mt-1">
-                        <input type="text" name="title" id="title" :value="title"  @input="$emit('update:title', $event.target.value)"
-                            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                            placeholder="Title of product" aria-describedby="title-description" />
+                        <input type="text" :value="title"  @input="$emit('update:title', $event.target.value)"  class="input"  placeholder="Title of product"/>
                     </div>
                     <p class="mt-2 text-sm text-red-500" id="title-description">
                         {{ error }}
@@ -17,11 +15,11 @@
                 </div>
             </div>
         </div>
-        <div class="pnl">
-            <div class="pnl-itm">
+        <div class="panel">
+            <div class="panel-item">
                 Description
             </div>
-            <div class="pnl-itm">
+            <div class="panel-item">
                 <quillEditor v-model:value="description" />
             </div>
         </div>

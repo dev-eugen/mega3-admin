@@ -1,7 +1,7 @@
 <template>
     <div class=" mb-2">
         <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
-            <div class="pnl-itm">
+            <div class="panel-item">
                 Media
             </div>
             <div class="px-4 py-5 sm:p-6 ">

@@ -1,6 +1,6 @@
 <template>
-    <div class="pnl">
-        <div class="pnl-itm flex justify-between items-center">
+    <div class="panel">
+        <div class="panel-item flex justify-between items-center">
             Product status
             <Listbox class="float-right" as="div" v-model="selected">
                 <ListboxLabel class="sr-only">

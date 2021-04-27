@@ -15,7 +15,7 @@
         <div class="col-span-12 sm:col-span-6">
           <label
             for="first_name"
-            class="block text-sm font-medium text-gray-700"
+            class="label"
             >Password</label
           >
           <input
@@ -28,7 +28,7 @@
         </div>
 
         <div class="col-span-12 sm:col-span-6">
-          <label for="last_name" class="block text-sm font-medium text-gray-700"
+          <label for="last_name" class="label"
             >Repeat password</label
           >
           <input
@@ -41,7 +41,7 @@
         </div>
 
         <div class="col-span-12">
-          <label for="url" class="block text-sm font-medium text-gray-700"
+          <label for="url" class="label"
             >Reserve e-mail</label
           >
           <input
