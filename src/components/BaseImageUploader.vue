@@ -1,10 +1,10 @@
 <template>
     <div class=" mb-2">
-        <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
+        <div class="panel">
             <div class="panel-item">
                 Media
             </div>
-            <div class="px-4 py-5 sm:p-6 ">
+            <div class="panel-item ">
                 <div @drop="startDrop($event)" v-if="modelValue.length === 0" class="w-full px-2">
                     <div
                         class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
