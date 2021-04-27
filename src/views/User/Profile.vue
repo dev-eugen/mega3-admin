@@ -13,7 +13,7 @@
                 <div class="mt-6 flex flex-col lg:flex-row">
                   <div class="flex-grow space-y-6">
                     <div>
-                      <label for="username" class="block text-sm font-medium text-gray-700">
+                      <label for="username" class="label">
                         Username
                       </label>
                       <div class="mt-1 rounded-md shadow-sm flex">
@@ -25,7 +25,7 @@
                     </div>
 
                     <div>
-                      <label for="about" class="block text-sm font-medium text-gray-700">
+                      <label for="about" class="label">
                         About
                       </label>
                       <div class="mt-1">
@@ -71,22 +71,22 @@
 
                 <div class="mt-6 grid grid-cols-12 gap-6">
                   <div class="col-span-12 sm:col-span-6">
-                    <label for="first_name" class="block text-sm font-medium text-gray-700">First name</label>
+                    <label for="first_name" class="label">First name</label>
                     <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm" />
                   </div>
 
                   <div class="col-span-12 sm:col-span-6">
-                    <label for="last_name" class="block text-sm font-medium text-gray-700">Last name</label>
+                    <label for="last_name" class="label">Last name</label>
                     <input type="text" name="last_name" id="last_name" autocomplete="family-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm" />
                   </div>
 
                   <div class="col-span-12">
-                    <label for="url" class="block text-sm font-medium text-gray-700">URL</label>
+                    <label for="url" class="label">URL</label>
                     <input type="text" name="url" id="url" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm" />
                   </div>
 
                   <div class="col-span-12 sm:col-span-6">
-                    <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
+                    <label for="company" class="label">Company</label>
                     <input type="text" name="company" id="company" autocomplete="organization" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm" />
                   </div>
                 </div>

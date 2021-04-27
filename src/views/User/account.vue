@@ -12,7 +12,7 @@
           <div>
             <label
               for="username"
-              class="block text-sm font-medium text-gray-700"
+              class="label"
             >
               Your Website
             </label>
@@ -34,7 +34,7 @@
           </div>
 
           <div>
-            <label for="about" class="block text-sm font-medium text-gray-700">
+            <label for="about" class="label">
               Change your photo
 
               <svg
@@ -139,7 +139,7 @@
         <div class="col-span-12 sm:col-span-6">
           <label
             for="first_name"
-            class="block text-sm font-medium text-gray-700"
+            class="label"
             >First name</label
           >
           <input
@@ -152,7 +152,7 @@
         </div>
 
         <div class="col-span-12 sm:col-span-6">
-          <label for="last_name" class="block text-sm font-medium text-gray-700"
+          <label for="last_name" class="label"
             >Last name</label
           >
           <input
@@ -165,7 +165,7 @@
         </div>
 
         <div class="col-span-12">
-          <label for="url" class="block text-sm font-medium text-gray-700"
+          <label for="url" class="label"
             >URL</label
           >
           <input
@@ -177,7 +177,7 @@
         </div>
 
         <div class="col-span-12 sm:col-span-6">
-          <label for="company" class="block text-sm font-medium text-gray-700"
+          <label for="company" class="label"
             >Company</label
           >
           <input

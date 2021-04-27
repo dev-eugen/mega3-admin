@@ -1,27 +1,23 @@
 <template>
-    <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
-        <div class="pnl-itm">
+    <div class="panel">
+        <div class="panel-item">
             <p class="m-1">Search engine listing preview</p>
             <p class="m-1 text-xs">Add a description to see how this product might appear in a search engine listing</p>
 
         </div>
         <div class="px-4 py-5 sm:p-6 flex flex-col">
             <div class="mb-3">
-                <label for="email" class="block text-sm font-medium text-gray-700">Page title</label>
+                <label class="label">Page title</label>
                 <div class="mt-1">
-                    <input type="text" name="email" id="email" :value="title"
-                        @input="$emit('update:title', $event.target.value)"
-                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                        :placeholder="p_title" aria-describedby="email-description" />
+                    <input type="text" :value="title"  @input="$emit('update:title', $event.target.value)"  class="input"  />
                 </div>
-                <p :class="`mt-2 text-sm text-${SizeCheck_color(title, 70)}-500`" id="email-description">
+                <p :class="`mt-2 text-sm text-${SizeCheck_color(title, 70)}-500`">
                     {{ title.length + ' of ' +  ' 70 ' + ' used' }}</p>
             </div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
-            <textarea id="about" name="about" rows="3" :value="description"
-                @input="$emit('update:description', $event.target.value)" :placeholder="String(p_description).slice(0, 70)"
-                class=" shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md" />
-            <p :class="`mt-2 text-sm text-${SizeCheck_color(description, 320)}-500`" id="email-description"> {{ description.length + ' of ' +  ' 320 ' + ' used' }}</p>
+            <label  class="label mb-2">Description</label>
+            <textarea rows="3" :value="description"
+                @input="$emit('update:description', $event.target.value)" :placeholder="String(p_description).slice(0, 70)" class="textarea" />
+            <p :class="`mt-2 text-sm text-${SizeCheck_color(description, 320)}-500`"> {{ description.length + ' of ' +  ' 320 ' + ' used' }}</p>
         </div>
         
     </div>

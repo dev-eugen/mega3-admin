@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
-            <div class="pnl-itm">
+            <div class="panel-item">
                 Shipping
                 <SwitchGroup as="div" class="flex items-center mt-3">
                     <Switch :value="tracked" @click="() => { tracked = !tracked; $emit('update:tracked', tracked)}"
@@ -19,7 +19,7 @@
                 <p class="block text-xs font-bold text-gray-900">WEIGHT</p>
                 <p class="block text-xs font-medium text-gray-700 my-2">Used to calculate shipping rates at checkout and
                     label prices during fulfillment.</p>
-                <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                <label for="price" class="label">Price</label>
                 <div class="mt-1 relative rounded-md shadow-sm">
                     <input type="text" name="price" id="price"
                         class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
@@ -38,7 +38,7 @@
                 <p class="block text-xs font-bold text-gray-900">Customs information</p>
                 <p class="block text-xs font-medium text-gray-700 my-2">Customs authorities use this information to calculate duties when shipping internationally. Shown on printed customs forms.</p>
                 <Listbox as="div" v-model="selected">
-                    <ListboxLabel class="block text-sm font-medium text-gray-700">
+                    <ListboxLabel class="label">
                     Assigned to
                     </ListboxLabel>
                     <div class="mt-1 relative">
