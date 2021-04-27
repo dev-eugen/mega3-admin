@@ -60,7 +60,7 @@
                                 <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
                                 <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
                                     <div>
-                                        <input v-model="modelValue[i].alt" type="text" name="email" id="email" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-600 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Alt of your image" />
+                                        <input v-model="modelValue[i].alt"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-600 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Alt of your image" />
                                     </div>
                                 </div>
                                 </TransitionChild>
