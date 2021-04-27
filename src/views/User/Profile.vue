@@ -6,27 +6,31 @@
         <h2 class="text-lg leading-6 font-medium text-gray-900">Profile</h2>
       </div>
 
-                <div class="mt-6 flex flex-col lg:flex-row">
-                  <div class="flex-grow space-y-6">
-                    <div>
-                      <label for="username" class="label">
-                        Username
-                      </label>
-                      <div class="mt-1 rounded-md shadow-sm flex">
-                        <span class="bg-gray-50 border border-r-0 border-gray-300 rounded-l-md px-3 inline-flex items-center text-gray-500 sm:text-sm">
-                          workcation.com/
-                        </span>
-                        <input type="text" name="username" id="username" autocomplete="username" class="focus:ring-light-blue-500 focus:border-light-blue-500 flex-grow block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300" :value="user.handle" />
-                      </div>
-                    </div>
+      <div class="mt-6 flex flex-col lg:flex-row">
+        <div class="flex-grow space-y-6">
+          <div>
+            <label for="username" class="label">
+              Username
+            </label>
+            <div class="mt-1 rounded-md shadow-sm flex">
+              <span
+                class="bg-gray-50 border border-r-0 border-gray-300 rounded-l-md px-3 inline-flex items-center text-gray-500 sm:text-sm">
+                workcation.com/
+              </span>
+              <input type="text" name="username" id="username" autocomplete="username"
+                class="focus:ring-light-blue-500 focus:border-light-blue-500 flex-grow block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                :value="user.handle" />
+            </div>
+          </div>
 
-                    <div>
-                      <label for="about" class="label">
-                        About
-                      </label>
-                      <div class="mt-1">
-                        <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md" />
-                      </div>
+          <div>
+            <label for="about" class="label">
+              About
+            </label>
+            <div class="mt-1">
+              <textarea id="about" name="about" rows="3"
+                class="shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md" />
+              </div>
                       <p class="mt-2 text-sm text-gray-500">
                         Brief description for your profile. URLs are hyperlinked.
                       </p>
