@@ -18,12 +18,14 @@
         <label for="first_name" class="block text-sm font-medium text-gray-700"
           >First name</label
         >
-        <input type="text" name="first_name" id="first_name"
-         class="mt-1 block w-full border
-        border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none
-        focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm"
+        <input
+          type="text"
+          name="first_name"
+          id="first_name"
+          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm"
           :value="title"
-        @input="$emit('update:title', $event.target.value)"/>
+          @input="$emit('update:title', $event.target.value)"
+        />
       </div>
 
       <div class="col-span-12 sm:col-span-6">
@@ -218,6 +220,8 @@
 
 <script >
 import { ref } from "vue";
+import { computed } from "vue";
+import { useStore } from "vuex";
 import {
   Disclosure,
   DisclosureButton,
@@ -232,16 +236,7 @@ import {
   SwitchLabel,
 } from "@headlessui/vue";
 import { SearchIcon } from "@heroicons/vue/solid";
-import {
-  BellIcon,
-  CogIcon,
-  CreditCardIcon,
-  KeyIcon,
-  MenuIcon,
-  UserCircleIcon,
-  ViewGridAddIcon,
-  XIcon,
-} from "@heroicons/vue/outline";
+import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
 
 const user = {
   name: "Debbie Lewis",
@@ -250,25 +245,6 @@ const user = {
   imageUrl:
     "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=320&h=320&q=80",
 };
-const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Jobs", href: "#", current: false },
-  { name: "Applicants", href: "#", current: false },
-  { name: "Company", href: "#", current: false },
-];
-const subNavigation = [
-  { name: "Profile", href: "#", icon: UserCircleIcon, current: true },
-  { name: "Account", href: "#", icon: CogIcon, current: false },
-  { name: "Password", href: "#", icon: KeyIcon, current: false },
-  { name: "Notifications", href: "#", icon: BellIcon, current: false },
-  { name: "Billing", href: "#", icon: CreditCardIcon, current: false },
-  { name: "Integrations", href: "#", icon: ViewGridAddIcon, current: false },
-];
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
 
 export default {
   components: {
@@ -283,31 +259,20 @@ export default {
     SwitchDescription,
     SwitchGroup,
     SwitchLabel,
-    BellIcon,
-    MenuIcon,
-    SearchIcon,
-    XIcon,
   },
-   props: {
-            title: {
-                type: String,
-                default: "",
-            },
-            description: {
-                type: String,
-                default: "",
-            },
-        },
-            setup(props, {
-            emit
-        }) {
-            const error = computed(() => props.title.length > 70 ? "Max length 70" : null)
-            watchEffect(() => emit('update:description', props.description))
-            return {
-                error
-            };
-        },
+  props: {
+    title: {
+      type: String,
+      default: "",
+    },
+    description: {
+      type: String,
+      default: "",
+    },
+  },
+
   setup() {
+    const store = useStore();
     const open = ref(false);
     const availableToHire = ref(true);
     const privateAccount = ref(false);
@@ -316,10 +281,8 @@ export default {
     const enabled = ref(true);
 
     return {
-      user,
-      navigation,
-      subNavigation,
-      userNavigation,
+      count: computed(() => store.state.user.user),
+
       open,
       availableToHire,
       privateAccount,

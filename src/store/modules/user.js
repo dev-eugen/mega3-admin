@@ -3,7 +3,10 @@ import router from "@/router";
 export default {
   namespaced: true,
   state: {
-    user: {},
+    user: {
+     firstname: ''
+      
+    },
     auth: false,
     first: true,
   },
