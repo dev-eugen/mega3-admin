@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
-        <div class="px-4 py-5 sm:px-6">
+        <div class="pnl-itm">
             <p class="m-1">Search engine listing preview</p>
             <p class="m-1 text-xs">Add a description to see how this product might appear in a search engine listing</p>
 

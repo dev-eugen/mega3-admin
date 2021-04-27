@@ -1,0 +1,8 @@
+.pnl{
+    @apply bg-white overflow-visible shadow rounded-lg mb-2 divide-y divide-gray-200
+}
+
+.pnl-itm{
+    @apply px-4 py-5 sm:px-6 
+}
+

@@ -2,9 +2,11 @@
     <Navigator title="Product"
         :actions="[{ title: 'Back', emit: 'back', color: 'red-500' }, { title: 'Save', emit: 'save', color: 'green-500' }]" />
     <div class="lg:mx-6 lg:my-3 grid grid-cols-12 gap-4">
+       
         <div class="lg:col-span-7 col-span-12">
 
             <Head v-model:title="product.title" v-model:description="product.descriptionHtml" />
+            <ImageUploader v-model="product.media" />
             <Price v-model:price="product.variants[0].price" v-model:amount="product.variants[0].inventory.amount" />
             <Inventory v-model:sku="product.variants[0].sku" v-model:barcode="product.variants[0].barcode"
                 v-model:tracked="product.variants[0].inventory.tracked"
@@ -27,6 +29,7 @@
     import Shipping from '@/components/Products/Shipping.vue'
     import SEO from '@/components/Products/SEO.vue'
     import Status from '@/components/Products/Status.vue'
+    import ImageUploader from '@/components/BaseImageUploader.vue'
     import {
         reactive
     } from 'vue'
@@ -37,13 +40,70 @@
             Inventory,
             Shipping,
             SEO,
-            Status
+            Status,
+            ImageUploader
         },
         setup() {
             const product = reactive({
                 title: '',
                 descriptionHtml: '',
                 status: '',
+                media: [
+                    {
+                        url: 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+                        alt: 'women',
+                        size: '15',
+                        ref: false
+                    },
+                    {
+                        url: 'https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg',
+                        alt: 'women',
+                        size: '15',
+                        ref: false
+                    },
+                    {
+                        url: 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+                        alt: 'women',
+                        size: '15',
+                        ref: false
+                    },
+                    {
+                        url: 'https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                        alt: 'women',
+                        size: '15',
+                        ref: false
+                    },
+                    {
+                        url: 'https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                        alt: 'women',
+                        size: '15',
+                        ref: false
+                    },
+                    {
+                        url: 'https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                        alt: 'women',
+                        size: '15',
+                        ref: false
+                    },
+                    {
+                        url: 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+                        alt: 'women',
+                        size: '15',
+                        ref: false
+                    },
+                    {
+                        url: 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+                        alt: 'women',
+                        size: '15',
+                        ref: false
+                    },
+                    {
+                        url: 'https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg',
+                        alt: 'women',
+                        size: '15',
+                        ref: false
+                    },
+                ],
                 variants: [{
                         price: 0.00,
                         sku: '',
