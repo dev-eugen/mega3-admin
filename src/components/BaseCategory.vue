@@ -13,7 +13,7 @@
                             <span @click="parent_id = 0, level = 0" class="inline-flex items-center p-1 rounded-3xl text-sm font-medium bg-indigo-100 text-indigo-600 hover:bg-indigo-200 hover:text-indigo-800">
                                 <ChevronDoubleLeftIcon  class="h-5 w-5" />
                             </span>
-                            <span @click="back(categories[0].parent_id)" class="inline-flex items-center p-1 rounded-3xl text-sm font-medium bg-indigo-100 text-indigo-600 hover:bg-indigo-200 hover:text-indigo-800">
+                            <span @click="back(categories[0].parent_id)" class="ml-3 inline-flex items-center p-1 rounded-3xl text-sm font-medium bg-indigo-100 text-indigo-600 hover:bg-indigo-200 hover:text-indigo-800">
                                 <ChevronLeftIcon class="h-5 w-5" />
                             </span>
                         </div>
@@ -32,7 +32,7 @@
             </div>
         </transition>
         <div class="panel-item" v-if="!more && selected" >
-                    <li  class="px-4 py-3 sm:px-0 flex justify-between">
+                    <li  class="px-4 py-4 sm:px-0 flex justify-between">
                         {{ selected.name.slice(0, 28) }} {{ selected.name.length > 28 ? '...' : ''}}
                         <span
                             class="inline-flex items-center p-1 rounded-3xl text-sm font-medium bg-indigo-100 text-indigo-600 hover:bg-indigo-200 hover:text-indigo-800">

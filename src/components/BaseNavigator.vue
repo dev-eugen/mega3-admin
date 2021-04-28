@@ -22,7 +22,6 @@ export default {
     actions: Array
   },
   setup(props) {
-    console.log(123)
   }
 }
 </script>
