@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="panel">
-            <div class="panel-item">
+            <div class="panel-item font-medium">
                 Доставка
                 <SwitchGroup as="div" class="flex items-center mt-3">
                     <Switch :value="tracked" @click="() => { tracked = !tracked; $emit('update:tracked', tracked)}"

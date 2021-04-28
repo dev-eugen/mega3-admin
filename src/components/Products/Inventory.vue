@@ -1,6 +1,6 @@
 <template>
     <div class="panel">
-        <div class="panel-item">
+        <div class="panel-item font-medium">
             Склад
         </div>
         <div class="panel-item flex flex-col">

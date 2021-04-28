@@ -1,6 +1,6 @@
 <template>
     <div class="panel">
-        <div class="panel-item">
+        <div class="panel-item font-medium">
             <p class="m-1">Предварительный просмотр списка поисковых систем</p>
             <p class="m-1 text-xs">Добавьте описание, чтобы увидеть, как этот продукт может появиться в списке поисковой системы</p>
 

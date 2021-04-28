@@ -4,20 +4,30 @@
     <div class="lg:mx-6 lg:my-3 grid grid-cols-12 gap-4">
        
         <div class="lg:col-span-7 col-span-12">
-
-            <Head v-model:title="product.title" v-model:description="product.descriptionHtml" />
-            <ImageUploader v-model="product.media" />
-            <Price v-model:price="product.variants[0].price" v-model:amount="product.variants[0].inventory.amount" />
-            <Inventory v-model:sku="product.variants[0].sku" v-model:barcode="product.variants[0].barcode"
+            <transition appear enter-active-class="opacity-0 -translate-x-12">
+                <div class="transform duration-150 ease-out">
+                    <Head v-model:title="product.title" v-model:description="product.descriptionHtml" />
+                    <ImageUploader v-model="product.media" />
+                     <Price v-model:price="product.variants[0].price" v-model:amount="product.variants[0].inventory.amount" />
+                    <Inventory v-model:sku="product.variants[0].sku" v-model:barcode="product.variants[0].barcode"
                 v-model:tracked="product.variants[0].inventory.tracked"
                 v-model:avaliable="product.variants[0].inventory.avaliable"
                 v-model:inventoryPolicy="product.variants[0].inventory.inventoryPolicy" />
-            <!-- <Shipping/> -->
-            <SEO v-model:title="product.variants[0].seo.title" v-model:description="product.variants[0].seo.description"
+                    <SEO v-model:title="product.variants[0].seo.title" v-model:description="product.variants[0].seo.description"
                 v-model:p_title="product.title" v-model:p_description="product.descriptionHtml" />
+                </div>
+            </transition>
+            <!-- <Shipping/> -->
+            
         </div>
         <div class="lg:col-span-5 col-span-12">
-            <Status  />
+            <transition appear enter-active-class="opacity-0 translate-y-12">
+                <div class="transform duration-150 ease-out">
+                    <Status  />
+                    <Categories />
+                </div>
+            </transition>
+            
         </div>
     </div>
 </template>
@@ -30,6 +40,7 @@
     import SEO from '@/components/Products/SEO.vue'
     import Status from '@/components/Products/Status.vue'
     import ImageUploader from '@/components/BaseImageUploader.vue'
+    import Categories from '@/components/BaseCategory.vue'
     import {
         reactive
     } from 'vue'
@@ -41,7 +52,7 @@
             Shipping,
             SEO,
             Status,
-            ImageUploader
+            ImageUploader, Categories
         },
         setup() {
             const product = reactive({

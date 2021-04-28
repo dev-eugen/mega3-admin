@@ -1,6 +1,6 @@
 <template>
     <div class="panel">
-        <div class="panel-item flex justify-between items-center">
+        <div class="panel-item flex justify-between items-center font-medium">
             Статус продукта
             <Listbox class="float-right" as="div" v-model="selected">
                 <ListboxLabel class="sr-only">
@@ -11,7 +11,7 @@
                         <div class="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-indigo-600">
                             <div
                                 class="relative inline-flex items-center bg-indigo-500 py-2 pl-3 pr-4 border border-transparent rounded-l-md shadow-sm text-white">
-                                <CheckIcon class="h-5 w-5" aria-hidden="true" />
+                                <!-- <CheckIcon class="h-5 w-5" aria-hidden="true" /> -->
                                 <p class="ml-2.5 text-sm font-medium">{{ selected.title }}</p>
                             </div>
                             <ListboxButton

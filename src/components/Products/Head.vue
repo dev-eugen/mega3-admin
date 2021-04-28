@@ -1,13 +1,14 @@
 <template>
     <div>
         <div class="panel">
-            <div class="panel-item">
+            <div class="panel-item font-medium">
                 Название
             </div>
             <div class="panel-item">
                 <div>
                     <div class="mt-1">
-                        <input type="text" :value="title"  @input="$emit('update:title', $event.target.value)"  class="input"  placeholder="Рубашка с подлокотником..."/>
+                        <input type="text" :value="title" @input="$emit('update:title', $event.target.value)"
+                            class="input" placeholder="Рубашка с подлокотником..." />
                     </div>
                     <p class="mt-2 text-sm text-red-500">
                         {{ error }}
@@ -16,11 +17,12 @@
             </div>
         </div>
         <div class="panel">
-            <div class="panel-item">
+            <div class="panel-item font-medium">
                 Описание
             </div>
             <div class="panel-item">
-                <quillEditor v-model:value="description"  :options="{ placeholder: 'Изготовлен из качественного материал..' }"/>
+                <quillEditor v-model:value="description"
+                    :options="{ placeholder: 'Изготовлен из качественного материал..' }" />
             </div>
         </div>
     </div>

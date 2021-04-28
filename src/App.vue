@@ -7,7 +7,7 @@
 </template>
 
 <script>
-
+import { useStore } from 'vuex'
 import menuLayout from "@/layouts/Menu.vue"
 import emptyLayout from "@/layouts/Empty.vue"
 import settingLayout from "@/layouts/Setting.vue"
@@ -22,6 +22,10 @@ export default {
     },
   },
   setup () {
+
+    const store = useStore()
+
+    store.dispatch('getCategories')
   
     return {
       

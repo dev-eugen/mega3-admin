@@ -1,7 +1,7 @@
 <template>
     <div class=" mb-2">
         <div class="panel">
-            <div class="panel-item flex items-center justify-between">
+            <div class="panel-item flex items-center justify-between font-medium">
                 Медиа
                 <button @click="href = !href" type="button" class="btn-indigo">
                     <LinkIcon class="btn-icon" aria-hidden="true" />

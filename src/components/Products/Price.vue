@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="panel">
-            <div class="panel-item">
+            <div class="panel-item font-medium">
                 Цена
             </div>
             <div class="panel-item">
