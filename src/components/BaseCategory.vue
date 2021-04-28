@@ -95,8 +95,8 @@ import axios from "@/libs/axios.js"
 
 
             return {
-                ...toRefs(state), up, level, back, isLast,
-                categories: computed(() => store.state.categories.filter(e => e.parent_id == state.parent_id)),
+                ...toRefs(state), up, level, back, isLast, 
+                categories: computed(() => state.r_categories.filter(e => e.parent_id == state.parent_id)),
                 
             }
         },
