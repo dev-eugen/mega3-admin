@@ -25,7 +25,7 @@ export default {
 
     const store = useStore()
 
-    store.dispatch('getCategories')
+    // store.dispatch('getCategories')
   
     return {
       

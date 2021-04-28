@@ -1,5 +1,5 @@
 <template>
-    <div class="panel">
+    <div class="panel" v-if="r_categories">
         <div class="panel-item flex justify-between font-medium">Категория
             <ChevronUpIcon @click="more = !more"  v-if="more" class="h-5 w-5 text-indigo-600" />
             <ChevronDownIcon @click="more = !more" v-else class="h-5 w-5 text-indigo-600" />
@@ -48,22 +48,29 @@
         ref,
         computed,
         reactive,
-        toRefs
+        toRefs,
+        onBeforeMount
     } from 'vue'
     import {
         useStore
     } from 'vuex'
 
+import axios from "@/libs/axios.js"
     export default {
         setup() {
             const store = useStore()
-            const r_categories = store.state.categories
-            const level = ref(0)
             const state = reactive({
                 more: true,
                 parent_id: 0,
+                r_categories: false,
                 selected: null
             })
+            onBeforeMount(async () => {
+               let payload = await axios.get('all-product-categories')
+               state.r_categories = payload.data.data
+            })
+            const level = ref(0)
+            
 
             const up = (id) => {
                 if (level.value !== 3) {
@@ -74,13 +81,13 @@
             }
 
             const  back = async (p_id) => {
-                let r = r_categories.find(e => e.id == p_id)
+                let r = state.r_categories.find(e => e.id == p_id)
                 state.parent_id = await r.parent_id
                 level.value--
             }
 
             const  isLast = (id) => {
-                let r = r_categories.find(e => e.parent_id == id)
+                let r = state.r_categories.find(e => e.parent_id == id)
                 return r?.id !== undefined
             }
 
