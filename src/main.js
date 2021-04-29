@@ -7,9 +7,10 @@ import * as icons from '@heroicons/vue/outline'
 import * as tailwindUI from "@headlessui/vue"
 import Navigator from "@/components/BaseNavigator.vue"
 import VueClipboard from 'vue3-clipboard'
+//import Multiselect from '@vueform/multiselect'
 const app = createApp(App)
 
-
+//app.component('Multiselect', Multiselect)
 
 app.directive("click-outside", {
   beforeMount: (el, binding) => {

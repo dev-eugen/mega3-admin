@@ -29,21 +29,30 @@
             <div class="mt-5 flex-1 h-0 overflow-y-auto">
               <nav class="px-2">
                 <div class="space-y-1">
-                  <a v-for="(item, i) in navigation" @click="go(item.href, i)" :key="item.name" :href="item.href"
-                    :class="[
+                  <div v-for="(item, i) in navigation" :key="item.name">
+                <a  @click="go(item.href, i)" :class="[
+                    item.current
+                      ? 'bg-gray-200 text-gray-900'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50',
+                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                  ]" :aria-current="item.current ? 'page' : undefined">
+                  <component :is="item.icon" :class="[
                       item.current
-                        ? 'bg-gray-100 text-gray-900'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50',
-                      'group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md',
-                    ]" :aria-current="item.current ? 'page' : undefined">
-                    <component :is="item.icon" :class="[
-                        item.current
-                          ? 'text-gray-500'
-                          : 'text-gray-400 group-hover:text-gray-500',
-                        'mr-3 h-6 w-6',
-                      ]" aria-hidden="true" />
-                    {{ item.name }}
-                  </a>
+                        ? 'text-gray-500'
+                        : 'text-gray-400 group-hover:text-gray-500',
+                      'mr-3 h-6 w-6',
+                    ]" aria-hidden="true" />
+                  {{ item.name }}
+                </a>
+                <transition  enter-active-class="opacity-0 -translate-y-6 h-0" leave-active-class="opacity-0 -translate-y-6" >
+                <div v-show="item.current" class="transform duration-300 ease-out">
+                  <a v-for="(subItem, index) in item.child" :key="index" @click="go(subItem.href, i)" :class="[ false   ? 'bg-gray-200 text-gray-900'   : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50',  'group flex items-center pl-4 pr-2 py-2 text-sm font-medium rounded-md',  ]">
+                  <component :is="subItem.icon" :class="[  false ? 'text-gray-500'   : 'text-gray-400 group-hover:text-gray-500', 'mr-3 h-6 w-6',   ]" aria-hidden="true" />
+                  {{ subItem.name }}
+                </a>
+                </div>
+                </transition>
+              </div>
                 </div>
                 <div class="mt-8">
                   <h3 class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider" id="teams-headline">
@@ -181,12 +190,14 @@
                     ]" aria-hidden="true" />
                   {{ item.name }}
                 </a>
-                <div v-show="item.current">
+                <transition enter-active-class="opacity-0 -translate-y-6 h-0" leave-active-class="opacity-0 -translate-y-6">
+                <div v-show="item.current" class="transform duration-300 ease-out">
                   <a v-for="(subItem, index) in item.child" :key="index" @click="go(subItem.href, i)" :class="[ false   ? 'bg-gray-200 text-gray-900'   : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50',  'group flex items-center pl-4 pr-2 py-2 text-sm font-medium rounded-md',  ]">
                   <component :is="subItem.icon" :class="[  false ? 'text-gray-500'   : 'text-gray-400 group-hover:text-gray-500', 'mr-3 h-6 w-6',   ]" aria-hidden="true" />
                   {{ subItem.name }}
                 </a>
                 </div>
+                </transition>
               </div>
             </div>
             <div class="mt-8">

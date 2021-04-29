@@ -13,7 +13,7 @@
                 v-model:tracked="product.variants[0].inventory.tracked"
                 v-model:avaliable="product.variants[0].inventory.avaliable"
                 v-model:inventoryPolicy="product.variants[0].inventory.inventoryPolicy" />
-                    <SEO v-model:title="product.variants[0].seo.title" v-model:description="product.variants[0].seo.description"
+                    <SEO v-model:keywords="product.variants[0].seo.keywords"  v-model:title="product.variants[0].seo.title" v-model:description="product.variants[0].seo.description"
                 v-model:p_title="product.title" v-model:p_description="product.descriptionHtml" />
                 </div>
             </transition>
@@ -127,7 +127,8 @@
                         },
                         seo: {
                             title: '',
-                            description: ''
+                            description: '',
+                            keywords: []
                         }
                     },
 
