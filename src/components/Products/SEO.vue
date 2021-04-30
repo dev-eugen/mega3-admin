@@ -20,9 +20,8 @@
                     v-model="kk"
                     mode="tags"
                     :searchable="true"
-                    :createTag="true"
                     :options="[
-                    { value: 'shop', label: 'shop' },
+                    { value: 'ырщз', label: 'ырщз' },
                     { value: 'robin', label: 'Robin' },
                     { value: 'joker', label: 'Joker' },
                     ]"

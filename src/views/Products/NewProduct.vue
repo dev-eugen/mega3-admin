@@ -6,19 +6,18 @@
         <div class="lg:col-span-7 col-span-12">
             <transition appear enter-active-class="opacity-0 -translate-x-12">
                 <div class="transform duration-150 ease-out">
-                    <Head v-model:title="product.title" v-model:description="product.descriptionHtml" />
-                    <ImageUploader v-model="product.media" />
-                     <Price v-model:price="product.variants[0].price" v-model:amount="product.variants[0].inventory.amount" />
-                    <Inventory v-model:sku="product.variants[0].sku" v-model:barcode="product.variants[0].barcode"
-                v-model:tracked="product.variants[0].inventory.tracked"
-                v-model:avaliable="product.variants[0].inventory.avaliable"
-                v-model:inventoryPolicy="product.variants[0].inventory.inventoryPolicy" />
-                    <SEO v-model:keywords="product.variants[0].seo.keywords"  v-model:title="product.variants[0].seo.title" v-model:description="product.variants[0].seo.description"
-                v-model:p_title="product.title" v-model:p_description="product.descriptionHtml" />
+                    <Head v-model:title="title" v-model:description="descriptionHtml" />
+                    <ImageUploader v-model="media" />
+                     <Price v-model:price="variants[0].price" v-model:amount="variants[0].inventory.amount" />
+                    <Inventory v-model:sku="variants[0].sku" v-model:barcode="variants[0].barcode"
+                v-model:tracked="variants[0].inventory.tracked"
+                v-model:avaliable="variants[0].inventory.avaliable"
+                v-model:inventoryPolicy="variants[0].inventory.inventoryPolicy" />
+                    <Shipping v-model:height="height" v-model:width="width"  v-model:length="length" v-model:weight="weight"/>
+                    <SEO v-model:keywords="variants[0].seo.keywords"  v-model:title="variants[0].seo.title" v-model:description="variants[0].seo.description"
+                v-model:p_title="title" v-model:p_description="descriptionHtml" />
                 </div>
-            </transition>
-            <!-- <Shipping/> -->
-            
+            </transition>            
         </div>
         <div class="lg:col-span-5 col-span-12">
             <transition appear enter-active-class="opacity-0 translate-y-12">
@@ -42,7 +41,7 @@
     import ImageUploader from '@/components/BaseImageUploader.vue'
     import Categories from '@/components/BaseCategory.vue'
     import {
-        reactive
+        reactive, toRefs
     } from 'vue'
     export default {
         components: {
@@ -115,7 +114,14 @@
                         ref: false
                     },
                 ],
-                variants: [{
+                shipping: {
+                    height: null,
+                    width: null,
+                    length: null,
+                    weight: null
+                },
+                variants: [
+                    {
                         price: 0.00,
                         sku: '',
                         barcode: '',
@@ -124,6 +130,9 @@
                             tracked: true,
                             inventoryPolicy: false,
                             available: 0
+                        },
+                        shipping:{
+
                         },
                         seo: {
                             title: '',
@@ -137,12 +146,21 @@
             })
 
             return {
-                product
+                ...toRefs(product)
             }
         }
     }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
+.multiselect-tag {
+    @apply bg-indigo-600;
+}
+.multiselect-tag i::before{
+    color: #fff
+}
+.multiselect-caret{
+    color: #9595a2 
+}
+    
 </style>

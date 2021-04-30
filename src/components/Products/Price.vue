@@ -13,7 +13,7 @@
                         UAH
                     </span>
                     <input :value="price"  @input="$emit('update:price', $event.target.value)" type="text" name="company_website" id="company_website"
-                        class="input"
+                        class="input-body"
                         placeholder="0" />
                 </div>
 
@@ -24,7 +24,7 @@
                     <span  class="input-append-span">
                         UAH
                     </span>
-                    <input :value="amount" @input="$emit('update:amount', $event.target.value)"  type="text" class="input" placeholder="0" />
+                    <input :value="amount" @input="$emit('update:amount', $event.target.value)"  type="text" class="input-body" placeholder="0" />
                 </div>
             </div>
         </div>

@@ -1,11 +1,11 @@
 <template>
     <div class="panel" v-if="r_categories">
-        <div class="panel-item flex justify-between font-medium">Категория
-            <ChevronUpIcon @click="more = !more"  v-if="more" class="h-5 w-5 text-indigo-600" />
-            <ChevronDownIcon @click="more = !more" v-else class="h-5 w-5 text-indigo-600" />
+        <div class="panel-item flex justify-between font-medium" @click="more = !more">Категория
+            <ChevronUpIcon   v-if="more" class="h-5 w-5 text-indigo-600" />
+            <ChevronDownIcon  v-else class="h-5 w-5 text-indigo-600" />
         </div>
         <transition appear enter-active-class="opacity-0 -translate-y-12 " leave-active-class="opacity-0 -translate-y-12 ">
-            <div class="panel-item transform duration-300 ease-out" v-show="more">
+            <div class="panel-item transform duration-100 ease-out" v-show="more">
                 <ul class="divide-y divide-gray-200">
                     <li  v-if="parent_id != 0" class="px-4 py-4 sm:px-0 flex justify-between">
                         Назад
