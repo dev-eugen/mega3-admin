@@ -7,11 +7,11 @@
             </div>
             <div class="panel-item">
                 <label class="label">Габариты</label>
-                <div class="w-full flex flex-row mt-2">
-                    <input :value="height"  @input="$emit('update:height', $event.target.value)" placeholder="Ширина, см" type="text" class="input mx-1">
-                    <input :value="width"  @input="$emit('update:width', $event.target.value)" placeholder="Высота, см" type="text" class="input mx-1">
-                    <input :value="length"  @input="$emit('update:length', $event.target.value)" placeholder="Длина, см" type="text" class="input mx-1">
-                    <input :value="weight"  @input="$emit('update:weight', $event.target.value)" placeholder="Вес, кг" type="text" class="input mx-1">
+                <div class="w-full flex flex-col lg:flex-row mt-2">
+                    <input :value="height"  @input="$emit('update:height', $event.target.value)" placeholder="Ширина, см" type="text" class="input mx-1 my-1">
+                    <input :value="width"  @input="$emit('update:width', $event.target.value)" placeholder="Высота, см" type="text" class="input mx-1 my-1">
+                    <input :value="length"  @input="$emit('update:length', $event.target.value)" placeholder="Длина, см" type="text" class="input mx-1 my-1">
+                    <input :value="weight"  @input="$emit('update:weight', $event.target.value)" placeholder="Вес, кг" type="text" class="input mx-1 my-1">
                 </div>
             </div>
         </div>

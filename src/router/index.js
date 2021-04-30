@@ -8,10 +8,20 @@ const routes = [
       layout: 'menu',
     }, 
   },
+  // * Ptoducts
+
   {
     path: '/products/new',
     name: 'productnew',
     component: () => import("@/views/Products/NewProduct.vue"),
+    meta: {
+      layout: 'menu',
+    }, 
+  },
+  {
+    path: '/product/:id',
+    name: 'productedit',
+    component: () => import("@/views/Products/EditProduct.vue"),
     meta: {
       layout: 'menu',
     }, 
@@ -24,6 +34,8 @@ const routes = [
       layout: 'menu',
     }, 
   },
+
+  // * Setting
   {
     path: '/profile',
     name: 'profile',
@@ -49,15 +61,7 @@ const routes = [
       layout: 'setting',
     }, 
   },
-  {
-
-    path: '/signin',
-    name: 'signin',
-    component: () => import("@/views/Signin.vue"),
-    meta: {
-      layout: 'empty',
-    }, 
-  },
+  
   {
     path: '/notification',
     name: 'notification',
@@ -88,6 +92,17 @@ const routes = [
     component: () => import("@/views/User/Billing.vue"),
     meta: {
       layout: 'setting',
+    }, 
+  },
+
+  // * auth
+
+  {
+    path: '/signin',
+    name: 'signin',
+    component: () => import("@/views/Signin.vue"),
+    meta: {
+      layout: 'empty',
     }, 
   },
 ]

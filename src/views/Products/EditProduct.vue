@@ -1,13 +1,47 @@
 <template>
     <div class="lg:mx-6 lg:my-3">
-        <div class="mb-2 panel-black p-5">    
+        <div class="mb-2 panel-black p-5">
             <div class="lg:flex lg:items-center lg:justify-between">
                 <div class="flex-1 min-w-0">
                     <h2 class="text-2xl font-bold leading-7 text-gray-100 sm:text-3xl sm:truncate">
                         Новый товар
                     </h2>
+                    <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
+                        <div class="mt-2 flex items-center text-sm text-gray-100">
+                            <InboxInIcon class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-white" aria-hidden="true" />
+                            69
+                        </div>
+                        <div class="mt-2 flex items-center text-sm text-gray-100">
+                            <StarIcon class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-white" aria-hidden="true" />
+                            4,5
+                        </div>
+                        <div class="mt-2 flex items-center text-sm text-gray-100">
+                            <CurrencyDollarIcon class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-white" aria-hidden="true" />
+                            220
+                        </div>
+                        <div class="mt-2 flex items-center text-sm text-gray-100">
+                            <CalendarIcon class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-white" aria-hidden="true" />
+                            01.03.2021
+                        </div>
+                    </div>
                 </div>
                 <div class="mt-5 flex lg:mt-0 lg:ml-4">
+                    <span class="hidden sm:block">
+                        <button type="button"
+                            class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <PencilIcon class="-ml-1 mr-2 h-5 w-5 text-gray-500" aria-hidden="true" />
+                            Edit
+                        </button>
+                    </span>
+
+                    <span class="hidden sm:block ml-3">
+                        <button type="button"
+                            class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <LinkIcon class="-ml-1 mr-2 h-5 w-5 text-gray-500" aria-hidden="true" />
+                            View
+                        </button>
+                    </span>
+
                     <span class="sm:ml-3">
                         <button type="button"
                             class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
