@@ -30,9 +30,7 @@
         <div class="col-span-12 sm:col-span-6">
           <label for="last_name" class="label">Фамилия</label>
           <input
-            type="text"
-            name="last_name"
-            id="last_name"
+           
             autocomplete="family-name"
             class="input"
           />
@@ -61,10 +59,7 @@
           <label for="first_name" class="label">Номер телефона</label>
 
           <input
-            type="text"
-            name="first_name"
-            id="first_name"
-            autocomplete="given-name"
+         
             class="input"
           />
         </div>
@@ -72,10 +67,8 @@
         <div class="col-span-12 sm:col-span-6">
           <label for="last_name" class="label">Пароль</label>
           <input
-            type="text"
-            name="last_name"
-            id="last_name"
-            autocomplete="family-name"
+           
+          
             class="input"
           />
         </div>
@@ -106,8 +99,7 @@
           <label for="first_name" class="label">Язык интерфейса</label>
 
           <select
-            id="location"
-            name="location"
+          
             class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
           >
             <option>UA</option>
@@ -119,8 +111,7 @@
         <div class="col-span-12 sm:col-span-6">
           <label for="last_name" class="label">Тема</label>
           <select
-            id="location"
-            name="location"
+          
             class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
           >
             <option>Light</option>
