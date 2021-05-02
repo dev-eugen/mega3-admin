@@ -1,0 +1,62 @@
+{
+    "name": "Qweqwe",
+    "description": "qweqwe",
+    "sku": "",
+    "quantity_in_stock": "56",
+    "price": "123",
+    "price_currency": 4004,
+    "minimum_order_quantity": "",
+    "measure_unit": 1011,
+    "category": "516",
+    "group": "90758898",
+    "selling_type": "3",
+    "display_status": 0,
+    "is_price_from": false,
+    "presence_sure": false,
+    "supply_period": "",
+    "coming_out": "10",
+    "seo_app_activated": false,
+    "packaging": "fwerftwe",
+    "keywords": "123, 123123wq, wqeqweqwe",
+    "company_site_attributes": "[]",
+    "deleted_variations": "[]",
+    "draft_variations": "1",
+    "labels": [
+        {
+            "id": 6703753,
+            "name": "щгшгнш8щгошщощ",
+            "isNew": false
+        },
+        {
+            "id": 6703754,
+            "name": "щгшрншгрощш",
+            "isNew": false
+        }
+    ],
+    "gtin": "102",
+    "mpn": "123",
+    "product_attributes": "[{\"id\":18,\"is_site\":false,\"value\":272985,\"group_name\":\"Основные\",\"alias_id\":null},{\"id\":228,\"is_site\":false,\"value\":7172,\"group_name\":\"Основные\",\"alias_id\":null},{\"id\":21701366,\"is_site\":true,\"value\":[380079770],\"group_name\":\"123\"}]",
+    "suggested_categories": [],
+    "presence": "avail",
+    "prices-0-price": "120",
+    "prices-0-minimum_order_quantity": "123",
+    "manufactory_company-0-name": "",
+    "manufactory_company-0-raw_address": "",
+    "importer_company-0-name": "",
+    "importer_company-0-raw_address": "",
+    "service_center_companies-0-name": "",
+    "service_center_companies-0-raw_address": "",
+    "images": [
+        3088484099,
+        3088484099
+    ],
+    "specs": [],
+    "translation-name": "",
+    "translation-description": "",
+    "translation-keywords": "",
+    "translation-is_uk_translation_loaded": false,
+    "delivery_packaging-width": "123",
+    "delivery_packaging-height": "123",
+    "delivery_packaging-depth": "123",
+    "delivery_packaging-weight": "123"
+}

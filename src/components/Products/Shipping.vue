@@ -45,6 +45,14 @@ const regions = [
                 type: Number,
                 default: null
             },
+            // sku: {
+            //     type: String,
+            //     default: null
+            // }, 
+            // barcode: {
+            //     type: String,
+            //     default: null
+            // }, 
         },
         setup() {
 

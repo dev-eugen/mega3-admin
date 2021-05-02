@@ -11,7 +11,6 @@ import { useStore } from 'vuex'
 import menuLayout from "@/layouts/Menu.vue"
 import emptyLayout from "@/layouts/Empty.vue"
 import settingLayout from "@/layouts/Setting.vue"
-
 export default {
   components: {
     menuLayout, emptyLayout, settingLayout
@@ -22,9 +21,7 @@ export default {
     },
   },
   setup () {
-
     const store = useStore()
-
     // store.dispatch('getCategories')
   
     return {
@@ -34,6 +31,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style src="@/assets/css/multiselect.css">
 </style>

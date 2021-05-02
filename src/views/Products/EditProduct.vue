@@ -60,7 +60,7 @@
 
                         <Head v-model:title="title" v-model:description="descriptionHtml" />
                         <ImageUploader v-model="media" />
-                        <Price v-model:price="variants[0].price" v-model:amount="variants[0].inventory.amount" />
+                        <Price v-model:price="variants[0].price" v-model:cost="variants[0].inventory.cost" />
                         <Inventory v-model:sku="variants[0].sku" v-model:barcode="variants[0].barcode"
                             v-model:tracked="variants[0].inventory.tracked"
                             v-model:avaliable="variants[0].inventory.avaliable"
@@ -181,7 +181,7 @@
                         sku: '',
                         barcode: '',
                         inventory: {
-                            amount: 0,
+                            cost: 0,
                             tracked: true,
                             inventoryPolicy: false,
                             available: 0

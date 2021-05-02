@@ -20,13 +20,13 @@
         </div>
         <div class="grid grid-cols-12 gap-4">
 
-            <div class="lg:col-span-7 col-span-12">
+            <!-- <div class="lg:col-span-7 col-span-12">
                 <transition appear enter-active-class="opacity-0 -translate-x-12">
                     <div class="transform duration-150 ease-out">
 
                         <Head v-model:title="title" v-model:description="descriptionHtml" />
                         <ImageUploader v-model="media" />
-                        <Price v-model:price="variants[0].price" v-model:amount="variants[0].inventory.amount" />
+                        <Price v-model:price="variants[0].price" v-model:cost="variants[0].inventory.cost" />
                         <Inventory v-model:sku="variants[0].sku" v-model:barcode="variants[0].barcode"
                             v-model:tracked="variants[0].inventory.tracked"
                             v-model:avaliable="variants[0].inventory.avaliable"
@@ -47,6 +47,10 @@
                     </div>
                 </transition>
 
+            </div> -->
+
+            <div class="col-span-12">
+                <Variant @add="addVariant" @del="delVariant" v-model="variants" :options="options"/>
             </div>
         </div>
     </div>
@@ -61,14 +65,16 @@
     import Status from '@/components/Products/Status.vue'
     import ImageUploader from '@/components/BaseImageUploader.vue'
     import Categories from '@/components/BaseCategory.vue'
+    import Variant from '@/components/Products/Variants.vue'
     import {
-        reactive,
+        reactive, ref, computed,
         toRefs
     } from 'vue'
     export default {
         components: {
             Head,
             Price,
+            Variant,
             Inventory,
             Shipping,
             SEO,
@@ -77,6 +83,8 @@
             Categories
         },
         setup() {
+
+            // data 
             const product = reactive({
                 title: '',
                 descriptionHtml: '',
@@ -142,18 +150,43 @@
                     length: null,
                     weight: null
                 },
-                variants: [{
+                variants: [
+                    {
+                        options: [
+                            {
+                                label: 'Размер',
+                                option: null
+                            },
+                            {
+                                label: 'Цвет',
+                                option: null
+                            },
+                            {
+                                label: 'Материал',
+                                option: null
+                            },
+                            {
+                                label: 'Стиль',
+                                option: null
+                            }
+                        ],
+                        user_options: [],
+                        images: [
+                            {
+                                url: 'https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg',
+                                alt: 'women',
+                                size: '15',
+                                ref: false
+                            },
+                        ],
                         price: 0.00,
                         sku: '',
                         barcode: '',
                         inventory: {
-                            amount: 0,
+                            cost: 0,
                             tracked: true,
                             inventoryPolicy: false,
                             available: 0
-                        },
-                        shipping: {
-
                         },
                         seo: {
                             title: '',
@@ -166,23 +199,107 @@
 
             })
 
+            const options = ref([
+                {
+                    label: 'Размер',
+                    options: ['XS', 'XL', 'S', 'M', 'L']
+                },
+                {
+                    label: 'Цвет',
+                    options: ['Красный', 'Желтый', 'Синий', 'Белый', 'Черный']
+                },
+                {
+                    label: 'Материал',
+                    options: ['Метал', 'Дерево', 'Синтетика', 'Котон', 'Хлопок']
+                },
+                {
+                    label: 'Стиль',
+                    options: ['Модерн', 'Пост-Модерн', 'Восточный', 'Западный']
+                }
+            ])
+
+            // variant func
+
+            const delVariant = (i) => {
+                product.variants.length > 1 ? product.variants.splice(i, 1) : null
+            }
+
+            const addVariant = () => {
+                product.variants.push({
+                        options: clearOptions,
+                        user_options: clearUserOptions(),
+                        price: 0.00,
+                        sku: '',
+                        barcode: '',
+                        images: [
+                            {
+                                url: 'https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg',
+                                alt: 'women',
+                                size: '15',
+                                ref: false
+                            },
+                        ],                        
+                        inventory: {
+                            cost: 0,
+                            tracked: true,
+                            inventoryPolicy: false,
+                            available: 0
+                        },
+                        seo: {
+                            title: '',
+                            description: '',
+                            keywords: []
+                        }
+                    })
+            }
+
+            // computed
+
+            const clearOptions = computed(() => {
+                let r = []
+                options.value.forEach(e => {
+                    r.push({
+                        label: e.label,
+                        option: null
+                    })
+                })
+                return r
+            })
+
+            const clearUserOptions = () => {
+                let r = []
+                product.variants[0].user_options.forEach(e => {
+                    r.push({
+                        label: e.label,
+                        option: null
+                    })
+                })
+                return r
+            }
+
             return {
-                ...toRefs(product)
+                ...toRefs(product), options, delVariant, addVariant, clearOptions, clearUserOptions
             }
         }
     }
 </script>
 
+
 <style lang="scss">
-    .multiselect-tag {
-        @apply bg-indigo-600;
-    }
+    // .multiselect-tag {
+    //     @apply bg-indigo-600;
+    // }
+    // .multiselect-tag i::before {
+    //     color: #fff
+    // }
+    // .multiselect-caret {
+    //     color: #9595a2
+    // }
+    // .multiselect-option .is-selected{
+    //     background: #4f46e5
+    // }
 
-    .multiselect-tag i::before {
-        color: #fff
-    }
-
-    .multiselect-caret {
-        color: #9595a2
-    }
+    //  .is-selected{
+    //     background: #4f46e5
+    // }
 </style>

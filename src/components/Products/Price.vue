@@ -12,7 +12,7 @@
                     <span  class="input-append-span">
                         UAH
                     </span>
-                    <input :value="price"  @input="$emit('update:price', $event.target.value)" type="text" name="company_website" id="company_website"
+                    <input :value="price"  @input="$emit('update:price', $event.target.value)" type=number step=0.01 name="company_website" id="company_website"
                         class="input-body"
                         placeholder="0" />
                 </div>
@@ -24,7 +24,7 @@
                     <span  class="input-append-span">
                         UAH
                     </span>
-                    <input :value="amount" @input="$emit('update:amount', $event.target.value)"  type="text" class="input-body" placeholder="0" />
+                    <input :value="cost" @input="$emit('update:cost', $event.target.value)"  type=number step=0.01 class="input-body" placeholder="0" />
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
     export default {
         props: {
             price: Number,
-            amount: Number
+            cost: Number
         }
     }
 </script>
