@@ -1,11 +1,11 @@
 <template>
     <div class="panel">
-        <div class="panel-item font-medium">
+        <div class="panel-item font-medium" @click="body_">
             <p class="m-1">Предварительный просмотр списка поисковых систем</p>
-            <p class="m-1 text-xs">Добавьте описание, чтобы увидеть, как этот продукт может появиться в списке поисковой системы</p>
+            <p v-show="body" class="m-1 text-xs">Добавьте описание, чтобы увидеть, как этот продукт может появиться в списке поисковой системы</p>
 
         </div>
-        <div class="panel-item flex flex-col">
+        <div class="panel-item flex flex-col" v-show="body">
             <div class="mb-3">
                 <label class="label">Название страницы</label>
                 <div class="mt-1">
@@ -21,9 +21,9 @@
                     mode="tags"
                     :searchable="true"
                     :options="[
-                    { value: 'ырщз', label: 'ырщз' },
-                    { value: 'robin', label: 'Robin' },
-                    { value: 'joker', label: 'Joker' },
+                        { value: 'ырщз', label: 'ырщз' },
+                        { value: 'robin', label: 'Robin' },
+                        { value: 'joker', label: 'Joker' },
                     ]"
                 />
             </div>
@@ -38,6 +38,7 @@
 
 
 <script>
+import useBody from '@/api/useBody.js'
 const people = [
     'Batman',
     'Robin',
@@ -72,7 +73,7 @@ import { watchEffect, ref } from '@vue/runtime-core'
 
             const kk = ref([])
 
-            return { SizeCheck_color, people, kk  }
+            return { SizeCheck_color, people, kk, ...useBody()  }
         }
     }
 </script>

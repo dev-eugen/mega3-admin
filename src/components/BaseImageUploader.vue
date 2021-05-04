@@ -1,14 +1,14 @@
 <template>
     <div class=" mb-2">
         <div class="panel">
-            <div class="panel-item flex items-center justify-between font-medium">
+            <div class="panel-item flex items-center justify-between font-medium" @click="body_">
                 Медиа
-                <button @click="href = !href" type="button" class="btn-indigo">
+                <button @click="href = !href" type="button" class="btn-indigo" v-show="body">
                     <LinkIcon class="btn-icon" aria-hidden="true" />
                     Из ссылки
                 </button>
             </div>
-            <div class="panel-item ">
+            <div class="panel-item " v-show="body">
                 <div @drop="startDrop($event)" v-if="modelValue.length === 0" class="w-full px-2">
                     <div
                         class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
@@ -140,6 +140,7 @@
 </template>
 
 <script>
+import useBody from '@/api/useBody.js'
     import {
         reactive,
         toRefs,
@@ -246,7 +247,7 @@
 
             watchEffect(() => emit('update:modelValue', props.modelValue))
             return {
-                ...toRefs(state), onDragStart, onReplase, onHref,
+                ...toRefs(state), onDragStart, onReplase, onHref, ...useBody(),
                 rotate,
                 deleteFile,
                 startDrop,

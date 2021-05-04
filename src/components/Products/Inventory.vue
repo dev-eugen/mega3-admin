@@ -1,9 +1,9 @@
 <template>
     <div class="panel">
-        <div class="panel-item font-medium">
+        <div class="panel-item font-medium" @click="body_">
             Склад
         </div>
-        <div class="panel-item flex flex-col">
+        <div class="panel-item flex flex-col" v-show="body">
             <div class="w-full flex flex-row mb-3">
                 <div class="w-3/6">
                     <label class="label">SKU</label>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import useBody from '@/api/useBody.js'
     export default {
         props: {
             sku: {
@@ -70,6 +71,11 @@
             avaliable: {
                 type: [Number, String]
             },
+        },
+        setup(props) {
+            return {
+                ...useBody()
+            }
         }
     }
 </script>

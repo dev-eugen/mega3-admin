@@ -1,17 +1,21 @@
 <template>
     <div class="panel w-auto">
-        <div class="panel-item flex flex-col">
-            <div class="flex justify-between items-center">
-                Варианты
-                <div>
-                    <button @click="$emit('add')" type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <div class="panel-item flex flex-col" @click="body = !body">
+            <div class="flex justify-between items-center font-medium">
+                <span>Варианты <span>{{ modelValue.length == 1 ? ' (только корневой) ' : `(${modelValue.length})`}}</span> </span>
+                <div class="flex flex-col lg:flex-row items-center ">
+                    <button @click.stop="$emit('add'), body = true" type="button" class="mb-1 lg:mb-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         <PlusIcon class="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-                        Добавить
+                        Добавить <span class="ml-0.5"> {{ modelValue.length == 1 ? ' второй  ' : '' }} </span>
+                    </button>
+                    <button @click.stop="$emit('applyAll')" type="button" class="group ml-2 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <CollectionIcon class="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
+                        Применить <span class="hidden lg:block group-hover:text-gray-400 ml-1">групповые атрибуты</span> 
                     </button>
                 </div>
             </div>
         </div>
-        <div class="panel-item">
+        <div class="panel-item" v-show="modelValue.length > 1 && body">
             <div class="flex flex-col  mt-1">
                 <div class="-my-2 overflow-y-visible  sm:-mx-6 ">
                     <div class="py-2 align-middle inline-block min-w-full">
@@ -57,7 +61,6 @@
                                         </td>
                                         <td class="px-4 py-4 whitespace-nowrap flex flex-col">
                                             <div v-for="(option, index) in variant.options" :key="index" class="w-40 mb-1">
-                                                <!-- <bselect v-model="modelValue[i].options[index].option" :placeholder="modelValue[i].options[index].label"  :searchable="true" :options="options[index].options" /> -->
                                                 <Multiselect v-model="modelValue[i].options[index].option" :placeholder="modelValue[i].options[index].label"  :searchable="true" :options="options[index].options" />
                                             </div>
 
@@ -79,7 +82,7 @@
                                             </div>
                                         </td>
                                         <td class="px-4 py-4 whitespace-nowrap">
-                                            <div class=" grid grid-cols-2 gap-4">
+                                            <div class="w-64 grid grid-cols-2 gap-4">
                                                 <div>
                                                     <label class="label">В наличии</label>
                                                     <input v-model="modelValue[i].inventory.available" type="number" class="input" placeholder="0" />   
@@ -96,7 +99,7 @@
                                                                                     
                                         </td>
                                         <td class="px-4 py-4 whitespace-nowrap">
-                                            <span class="relative z-0 inline-flex shadow-sm rounded-md">
+                                            <span class="relative inline-flex shadow-sm rounded-md">
                                                 <button type="button" class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-green-500 text-sm font-medium text-white  ">
                                                     <PencilAltIcon class="h-5 w-5" aria-hidden="true" />
                                                 </button>
@@ -134,7 +137,7 @@
                         </DialogTitle>
                         <div class="mt-2">
                         <div class="flex flex-col">
-                            <label class="label text-left p-1">Название</label>
+                            <label class="label text-left p-1" v-show="user_options.length !== 0" >Название</label>
                             <div v-for="(option, i) in user_options" :key="i" class="mb-2 flex flex-row">
                                 <div class="w-10/12">
                                     <input v-model="user_options[i].label" type="text" class="input w-10/12">
@@ -150,7 +153,7 @@
                     </div>
                     </div>
                     <div class="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
-                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:col-start-2 sm:text-sm" @click="labelUpdate">
+                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:col-start-2 sm:text-sm" @click="labelUpdate">
                         Сохранить
                     </button>
                     <button @click="addUserOption" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:col-start-1 sm:text-sm"  ref="cancelButtonRef">
@@ -166,9 +169,9 @@
 </template>
 
 <script>
-
+import useBody from '@/api/useBody.js'
+import useVariants from "@/api/useVariants.js"
 import Multiselect from '@vueform/multiselect'
-import bselect from "@/components/BaseSelect.vue"
     import {
         reactive,
         ref,
@@ -177,8 +180,7 @@ import bselect from "@/components/BaseSelect.vue"
 
     export default {
         components: {
-            Multiselect,
-            bselect
+            Multiselect
         },
         props: {
             modelValue: {
@@ -188,10 +190,13 @@ import bselect from "@/components/BaseSelect.vue"
             options: {
                 type: Array,
                 require: null
+            },
+            user_options: {
+                type: Array,
+                require: null
             }
         },
         setup(props) {
-            const open = ref(false)
 
             const state = reactive({
                 user_options: []
@@ -200,44 +205,17 @@ import bselect from "@/components/BaseSelect.vue"
             // * variant user options 
 
 
-            const addUserOption = () => {
-                open.value = true
-                state.user_options.push({
-                    label: '',
-                    option: null
-                })
+            const { addUserOption, labelUpdate, delUserOption, open } = useVariants(props, state)
 
-                props.modelValue.forEach(e => {
-                    e.user_options.push({
-                        label: '',
-                        option: null
-                    })
-                })
-            }
+            const { body } = useBody()
 
-            const labelUpdate = () => {
-                props.modelValue.forEach((e) => {
-                    e.user_options.forEach((element, i) => {
-                        element.label = state.user_options[i].label
-                    })
-                })
-                open.value = false
-            }
-
-            const delUserOption = (i) => {
-                props.modelValue.forEach((e) => {
-                    e.user_options.splice(i, 1)
-                })
-
-                state.user_options.splice(i, 1)
-            }
 
             
 
             
 
             return {
-                ...toRefs(state), open, addUserOption, labelUpdate, delUserOption
+                ...toRefs(state), open, addUserOption, labelUpdate, delUserOption, ...useBody(), body
             }
         }
     }

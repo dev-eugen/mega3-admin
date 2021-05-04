@@ -169,7 +169,7 @@
               </div>
               <input type="text" name="search" id="search"
                 class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-9 sm:text-sm border-gray-300 rounded-md"
-                placeholder="Search" />
+                placeholder="Поиск" />
             </div>
           </div>
           <!-- Navigation -->
@@ -242,7 +242,7 @@
                 </div>
                 <input id="search_field" name="search_field"
                   class="block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-transparent focus:placeholder-gray-400 sm:text-sm"
-                  placeholder="Search" type="search" />
+                  placeholder="Главная" type="search" />
               </div>
             </form>
           </div>

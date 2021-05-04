@@ -1,10 +1,14 @@
 <template>
     <div class="lg:mx-6 lg:my-3">
-        <div class="mb-2 panel-black p-5">    
+        <div class="mb-2 panel-black p-5">
             <div class="lg:flex lg:items-center lg:justify-between">
                 <div class="flex-1 min-w-0">
-                    <h2 class="text-2xl font-bold leading-7 text-gray-100 sm:text-3xl sm:truncate">
+                    <h2 v-if="products.length == 1"
+                        class="text-2xl font-bold leading-7 text-gray-100 sm:text-3xl sm:truncate">
                         Новый товар
+                    </h2>
+                    <h2 v-else class="text-2xl font-bold leading-7 text-gray-100 sm:text-3xl sm:truncate">
+                        Новая группа товаров
                     </h2>
                 </div>
                 <div class="mt-5 flex lg:mt-0 lg:ml-4">
@@ -18,39 +22,72 @@
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-12 gap-4">
+        <div class="grid grid-cols-12 gap-x-4">
 
-            <!-- <div class="lg:col-span-7 col-span-12">
+            <div class="lg:col-span-7 col-span-12">
                 <transition appear enter-active-class="opacity-0 -translate-x-12">
                     <div class="transform duration-150 ease-out">
 
-                        <Head v-model:title="title" v-model:description="descriptionHtml" />
+                        <Head v-if="products.length == 1" v-model:title="products[0].title"
+                            v-model:description="products[0].descriptionHtml" />
+
+                        <Head v-else scnd_placaholder=" группы (необязательно)" v-model:title="title"
+                            v-model:description="descriptionHtml" />
                         <ImageUploader v-model="media" />
-                        <Price v-model:price="variants[0].price" v-model:cost="variants[0].inventory.cost" />
-                        <Inventory v-model:sku="variants[0].sku" v-model:barcode="variants[0].barcode"
-                            v-model:tracked="variants[0].inventory.tracked"
-                            v-model:avaliable="variants[0].inventory.avaliable"
-                            v-model:inventoryPolicy="variants[0].inventory.inventoryPolicy" />
-                        <Shipping v-model:height="height" v-model:width="width" v-model:length="length"
-                            v-model:weight="weight" />
-                        <SEO v-model:keywords="variants[0].seo.keywords" v-model:title="variants[0].seo.title"
-                            v-model:description="variants[0].seo.description" v-model:p_title="title"
-                            v-model:p_description="descriptionHtml" />
+                        <Price v-if="products.length == 1" v-model:price="products[0].price"
+                            v-model:cost="products[0].inventory.cost" />
+                        <Price v-else scnd_placaholder=" группы (необязательно)" v-model:price="price"
+                            v-model:cost="cost" />
+                        <Prices v-if="products.length == 1" v-model="products[0].prices" />
+                        <Prices v-else scnd_placaholder="по группе (необязательно)" v-model="prices" />
+                        <Inventory v-if="products.length == 1" v-model:sku="products[0].sku"
+                            v-model:barcode="products[0].barcode" v-model:tracked="products[0].inventory.tracked"
+                            v-model:avaliable="products[0].inventory.available"
+                            v-model:inventoryPolicy="products[0].inventory.inventoryPolicy" />
+                        <Shipping v-if="products.length == 1" v-model:height="products[0].shipping.height"
+                            v-model:width="products[0].shipping.width" v-model:length="products[0].shipping.length"
+                            v-model:weight="products[0].shipping.weight" />
+                        <Shipping v-else scnd_placaholder=" группы (необязательно)"
+                            v-model:height="shipping.height" v-model:width="shipping.width"
+                            v-model:length="shipping.length" v-model:weight="shipping.weight" />
+                        <Options v-if="products.length == 1" v-model:r_options="products[0].options"
+                            v-model:options="options" v-model:user_options="user_options" v-model:r_user_options="products[0].user_options" />
+
                     </div>
                 </transition>
             </div>
-            <div class="lg:col-span-5 col-span-12">
+
+            <div class="lg:col-span-5 col-span-12 z-50">
                 <transition appear enter-active-class="opacity-0 translate-y-12">
                     <div class="transform duration-150 ease-out">
-                        <Status />
+                        <Status @change="status_change" />
                         <Categories />
                     </div>
                 </transition>
 
-            </div> -->
+            </div>
 
-            <div class="col-span-12">
-                <Variant @add="addVariant" @del="delVariant" v-model="variants" :options="options"/>
+            <div class="col-span-12 z-10">
+                <transition appear enter-active-class="opacity-0 -translate-x-12">
+                    <div class="transform duration-150 ease-out">
+                        <Variant @applyAll="applyAll" @add="addVariant" @del="delVariant" v-model="products" :options="options"
+                            :user_options="user_options" />
+                    </div>
+                </transition>
+            </div>
+
+
+            <div class="lg:col-span-7 col-span-12 z-0">
+                <transition appear enter-active-class="opacity-0 -translate-x-12">
+                    <div class="transform duration-150 ease-out">
+                        <SEO v-if="products.length == 1" v-model:keywords="products[0].seo.keywords"
+                            v-model:title="products[0].seo.title" v-model:description="products[0].seo.description"
+                            v-model:p_title="products[0].title" v-model:p_description="products[0].descriptionHtml" />
+                        <SEO v-else v-model:keywords="seo.keywords" v-model:title="seo.title"
+                            v-model:description="seo.description" v-model:p_title="title"
+                            v-model:p_description="descriptionHtml" />
+                    </div>
+                </transition>
             </div>
         </div>
     </div>
@@ -58,6 +95,7 @@
 
 <script>
     import Price from '@/components/Products/Price.vue'
+    import Prices from '@/components/Products/Prices.vue'
     import Head from '@/components/Products/Head.vue'
     import Inventory from '@/components/Products/Inventory.vue'
     import Shipping from '@/components/Products/Shipping.vue'
@@ -66,12 +104,14 @@
     import ImageUploader from '@/components/BaseImageUploader.vue'
     import Categories from '@/components/BaseCategory.vue'
     import Variant from '@/components/Products/Variants.vue'
+    import Options from '@/components/Products/Options.vue'
     import {
-        reactive, ref, computed,
+        reactive,
         toRefs
     } from 'vue'
     export default {
         components: {
+            Options,
             Head,
             Price,
             Variant,
@@ -80,15 +120,41 @@
             SEO,
             Status,
             ImageUploader,
-            Categories
+            Categories,
+            Prices
         },
         setup() {
 
             // data 
-            const product = reactive({
+            const group_product = reactive({
                 title: '',
                 descriptionHtml: '',
-                status: '',
+                price: 0.00,
+                prices: [],
+                cost: 0.00,
+                options: [{
+                        label: 'Размер',
+                        options: ['XS', 'XL', 'S', 'M', 'L']
+                    },
+                    {
+                        label: 'Цвет',
+                        options: ['Красный', 'Желтый', 'Синий', 'Белый', 'Черный']
+                    },
+                    {
+                        label: 'Материал',
+                        options: ['Метал', 'Дерево', 'Синтетика', 'Котон', 'Хлопок']
+                    },
+                    {
+                        label: 'Стиль',
+                        options: ['Модерн', 'Пост-Модерн', 'Восточный', 'Западный']
+                    }
+                ],
+                user_options: [],
+                seo: {
+                    title: '',
+                    description: '',
+                    keywords: []
+                },
                 media: [{
                         url: 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
                         alt: 'women',
@@ -150,10 +216,11 @@
                     length: null,
                     weight: null
                 },
-                variants: [
-                    {
-                        options: [
-                            {
+                products: [{
+                        title: '',
+                        descriptionHtml: '',
+                        status: '',
+                        options: [{
                                 label: 'Размер',
                                 option: null
                             },
@@ -171,15 +238,14 @@
                             }
                         ],
                         user_options: [],
-                        images: [
-                            {
-                                url: 'https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg',
-                                alt: 'women',
-                                size: '15',
-                                ref: false
-                            },
-                        ],
+                        images: [{
+                            url: 'https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg',
+                            alt: 'women',
+                            size: '15',
+                            ref: false
+                        }, ],
                         price: 0.00,
+                        prices: [],
                         sku: '',
                         barcode: '',
                         inventory: {
@@ -192,83 +258,96 @@
                             title: '',
                             description: '',
                             keywords: []
-                        }
+                        },
+                        shipping: {
+                            height: null,
+                            width: null,
+                            length: null,
+                            weight: null
+                        },
                     },
 
                 ]
 
             })
 
-            const options = ref([
-                {
-                    label: 'Размер',
-                    options: ['XS', 'XL', 'S', 'M', 'L']
-                },
-                {
-                    label: 'Цвет',
-                    options: ['Красный', 'Желтый', 'Синий', 'Белый', 'Черный']
-                },
-                {
-                    label: 'Материал',
-                    options: ['Метал', 'Дерево', 'Синтетика', 'Котон', 'Хлопок']
-                },
-                {
-                    label: 'Стиль',
-                    options: ['Модерн', 'Пост-Модерн', 'Восточный', 'Западный']
-                }
-            ])
+
 
             // variant func
 
+            const applyAll = () => {
+                group_product.products.forEach(e => {
+                    e.title = group_product.title
+                    e.descriptionHtml = group_product.descriptionHtml
+                    e.price = group_product.price
+                    e.inventory.cost = group_product.cost
+                    e.shipping = group_product.shipping
+                    e.seo = group_product.seo
+                })
+            }
+
+            const status_change = (status) => {
+                group_product.products.forEach(e => {
+                    e.status = status
+                })
+            }
+
             const delVariant = (i) => {
-                product.variants.length > 1 ? product.variants.splice(i, 1) : null
+                group_product.products.length > 1 ? group_product.products.splice(i, 1) : null
             }
 
             const addVariant = () => {
-                product.variants.push({
-                        options: clearOptions,
-                        user_options: clearUserOptions(),
-                        price: 0.00,
-                        sku: '',
-                        barcode: '',
-                        images: [
-                            {
-                                url: 'https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg',
-                                alt: 'women',
-                                size: '15',
-                                ref: false
-                            },
-                        ],                        
-                        inventory: {
-                            cost: 0,
-                            tracked: true,
-                            inventoryPolicy: false,
-                            available: 0
-                        },
-                        seo: {
-                            title: '',
-                            description: '',
-                            keywords: []
-                        }
-                    })
+                group_product.products.push({
+                    options: clearOptions(),
+                    user_options: clearUserOptions(),
+                    price: 0.00,
+                    prices: [],
+                    sku: '',
+                    barcode: '',
+                    images: [{
+                        url: 'https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg',
+                        alt: 'women',
+                        size: '15',
+                        ref: false
+                    }, ],
+                    inventory: {
+                        cost: 0,
+                        tracked: true,
+                        inventoryPolicy: false,
+                        available: 0
+                    },
+                    seo: {
+                        title: '',
+                        description: '',
+                        keywords: []
+                    },
+                    shipping: {
+                        height: null,
+                        width: null,
+                        length: null,
+                        weight: null
+                    },
+                })
             }
 
             // computed
 
-            const clearOptions = computed(() => {
+            const clearOptions = () => {
                 let r = []
-                options.value.forEach(e => {
+                group_product.options.forEach(e => {
                     r.push({
                         label: e.label,
                         option: null
                     })
                 })
                 return r
-            })
+            }
+
+            // func
 
             const clearUserOptions = () => {
                 let r = []
-                product.variants[0].user_options.forEach(e => {
+                group_product.user_options.forEach(e => {
                     r.push({
                         label: e.label,
                         option: null
@@ -278,28 +357,13 @@
             }
 
             return {
-                ...toRefs(product), options, delVariant, addVariant, clearOptions, clearUserOptions
+                ...toRefs(group_product),
+                delVariant,
+                addVariant,
+                clearOptions,
+                clearUserOptions,
+                status_change, applyAll
             }
         }
     }
 </script>
-
-
-<style lang="scss">
-    // .multiselect-tag {
-    //     @apply bg-indigo-600;
-    // }
-    // .multiselect-tag i::before {
-    //     color: #fff
-    // }
-    // .multiselect-caret {
-    //     color: #9595a2
-    // }
-    // .multiselect-option .is-selected{
-    //     background: #4f46e5
-    // }
-
-    //  .is-selected{
-    //     background: #4f46e5
-    // }
-</style>
