@@ -205,7 +205,7 @@
   text-align: left;
 }
 .multiselect-option.is-pointed {
-  background: #e6e6e6;
+  @apply bg-gray-300
 }
 .multiselect-option.is-disabled {
   background: #f9f9f9;

@@ -5,7 +5,7 @@
                 Теги {{ scnd_placaholder }}
             </div>
             <div class="panel-item" v-show="body">
-                <!-- <Multiselect />0 -->
+                <Multiselect v-model="modelValue" :options="tags"  :searchable="true" mode="tags"/>
             </div>
         </div>
     </div>
@@ -14,10 +14,11 @@
 <script>
 import useBody from '@/api/useBody.js'
 import Multiselect from '@vueform/multiselect'
-
+import { computed, watchEffect } from 'vue'
+import { useStore } from 'vuex'
     export default {
         props: {
-            tags: {
+            modelValue: {
                 type: Array,
                 default: []
             }
@@ -25,9 +26,14 @@ import Multiselect from '@vueform/multiselect'
         components: {
             Multiselect
         },
-        setup(props) {
+        setup(props, { emit }) {
+            const store = useStore()
+
+
+            watchEffect(() => emit('update:modelValue', props.modelValue))
           return{
-              ...useBody()
+              ...useBody(),
+                tags: computed(() => store.state.tags)
           }  
         }
     }

@@ -23,6 +23,7 @@ export default {
   setup () {
     const store = useStore()
     // store.dispatch('getCategories')
+     store.dispatch('getTags')
   
     return {
       

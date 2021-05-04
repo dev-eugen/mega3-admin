@@ -62,7 +62,8 @@
                     <div class="transform duration-150 ease-out">
                         <Status @change="status_change" />
                         <Categories />
-                        <Tags />
+                        <Tags v-if="products.length == 1" v-model="products[0].tags" />
+                        <Tags v-else v-model="tags" />
                     </div>
                 </transition>
 
@@ -107,6 +108,7 @@
     import Variant from '@/components/Products/Variants.vue'
     import Options from '@/components/Products/Options.vue'
     import Tags from '@/components/Products/Tags.vue'
+    import useVariants from "@/api/useVariants.js"
     import {
         reactive,
         toRefs
@@ -126,7 +128,7 @@
             Prices,
             Tags
         },
-        setup() {
+        setup(props) {
 
             // data 
             const group_product = reactive({
@@ -135,6 +137,7 @@
                 price: 0.00,
                 prices: [],
                 cost: 0.00,
+                tags: [],
                 options: [{
                         label: 'Размер',
                         options: ['XS', 'XL', 'S', 'M', 'L']
@@ -222,6 +225,7 @@
                 products: [{
                         title: '',
                         descriptionHtml: '',
+                        tags: [],
                         status: '',
                         options: [{
                                 label: 'Размер',
@@ -276,88 +280,7 @@
 
 
 
-            // variant func
-
-            const applyAll = () => {
-                group_product.products.forEach(e => {
-                    e.title = group_product.title
-                    e.descriptionHtml = group_product.descriptionHtml
-                    e.price = group_product.price
-                    e.inventory.cost = group_product.cost
-                    e.shipping = group_product.shipping
-                    e.seo = group_product.seo
-                })
-            }
-
-            const status_change = (status) => {
-                group_product.products.forEach(e => {
-                    e.status = status
-                })
-            }
-
-            const delVariant = (i) => {
-                group_product.products.length > 1 ? group_product.products.splice(i, 1) : null
-            }
-
-            const addVariant = () => {
-                group_product.products.push({
-                    options: clearOptions(),
-                    user_options: clearUserOptions(),
-                    price: 0.00,
-                    prices: [],
-                    sku: '',
-                    barcode: '',
-                    images: [{
-                        url: 'https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg',
-                        alt: 'women',
-                        size: '15',
-                        ref: false
-                    }, ],
-                    inventory: {
-                        cost: 0,
-                        tracked: true,
-                        inventoryPolicy: false,
-                        available: 0
-                    },
-                    seo: {
-                        title: '',
-                        description: '',
-                        keywords: []
-                    },
-                    shipping: {
-                        height: null,
-                        width: null,
-                        length: null,
-                        weight: null
-                    },
-                })
-            }
-
-            // computed
-
-            const clearOptions = () => {
-                let r = []
-                group_product.options.forEach(e => {
-                    r.push({
-                        label: e.label,
-                        option: null
-                    })
-                })
-                return r
-            }
-
-            // func
-
-            const clearUserOptions = () => {
-                let r = []
-                group_product.user_options.forEach(e => {
-                    r.push({
-                        label: e.label,
-                        option: null
-                    })
-                })
-                return r
-            }
+           const {  clearUserOptions, clearOptions, delVariant, addVariant, status_change, applyAll } = useVariants(props, group_product)
 
             return {
                 ...toRefs(group_product),
