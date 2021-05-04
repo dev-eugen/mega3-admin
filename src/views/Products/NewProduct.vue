@@ -62,6 +62,7 @@
                     <div class="transform duration-150 ease-out">
                         <Status @change="status_change" />
                         <Categories />
+                        <Tags />
                     </div>
                 </transition>
 
@@ -105,6 +106,7 @@
     import Categories from '@/components/BaseCategory.vue'
     import Variant from '@/components/Products/Variants.vue'
     import Options from '@/components/Products/Options.vue'
+    import Tags from '@/components/Products/Tags.vue'
     import {
         reactive,
         toRefs
@@ -121,7 +123,8 @@
             Status,
             ImageUploader,
             Categories,
-            Prices
+            Prices,
+            Tags
         },
         setup() {
 
