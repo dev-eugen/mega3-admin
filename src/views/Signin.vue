@@ -209,7 +209,6 @@
 <script>
 import { login } from '@/models/user.js'
 import { ref } from 'vue'
-import { useStore } from 'vuex'
 export default {
   setup(props) {
     const email = ref('')

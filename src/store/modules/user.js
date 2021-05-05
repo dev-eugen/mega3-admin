@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "@/libs/axios.js";
 import router from "@/router";
 export default {
   namespaced: true,
@@ -35,15 +35,7 @@ export default {
   actions: {
     async getUser({ commit }, route) {
       if (localStorage.getItem("access_token") !== null) {
-        var config = {
-          method: 'get',
-          url: 'https://api.mega3.uk/v1/user/profile',
-          headers: { 
-            'Authorization': 'Bearer ' + localStorage.access_token
-          }
-        };
-        
-        axios(config)
+        axios.get('user/profile')
           .then((r) => {
             if (r !== null && r !== undefined) {
               commit("setUser", r.data.data);

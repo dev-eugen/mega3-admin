@@ -9,8 +9,8 @@
             </div>
             <div class="panel-item" v-show="body && modelValue.length > 0">
                 <div class="w-full grid grid-cols-12 gap-4">
-                    <label for="price" class="col-span-5 block text-sm font-medium text-gray-700">Цена</label>
-                    <label for="price" class="col-span-5 block text-sm font-medium text-gray-700">Минимальное кол-во</label>
+                    <label  class="col-span-5 block text-sm font-medium text-gray-700">Цена</label>
+                    <label  class="col-span-5 block text-sm font-medium text-gray-700">Минимальное кол-во</label>
                 </div>
                 <div v-for="(price, i) in modelValue" :key="i" class=" mb-2">
                     <div class="w-full grid grid-cols-12 gap-4  items-center">

@@ -8,7 +8,7 @@
                 <div>
                     <div class="mt-1">
                         <input type="text" :value="title" @input="$emit('update:title', $event.target.value)"
-                            class="input" placeholder="Рубашка с подлокотником..." />
+                            class="input" :placeholder="title_placeholder" />
                     </div>
                     <p class="mt-2 text-sm text-red-500">
                         {{ error }}
@@ -42,6 +42,10 @@
             quillEditor,
         },
         props: {
+            title_placeholder: {
+                type: String,
+                default: 'Рубашка с подлокотником...'
+            },
             title: {
                 type: String,
                 default: "",

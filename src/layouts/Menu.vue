@@ -399,6 +399,11 @@
               icon: 'InboxInIcon',
               href: "products",
             },
+            {
+              name: 'Колекции',
+              icon: 'SunIcon',
+              href: "product-collections",
+            },
           ]
         },
         {

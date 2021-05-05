@@ -1,5 +1,5 @@
 import axios from "axios"
-
+import store from '@/store'
 export function login(email, password) {
     var data = new FormData()
     data.append('username', email)
@@ -18,9 +18,8 @@ export function login(email, password) {
     }
 
     axios(config)
-        .then(function (response) {
-            console.log(JSON.stringify(response.data))
-        })
+        .then((r) => (localStorage.access_token = r.data.access_token))
+        .then(() => store.dispatch("user/getUser", "profile"))
         .catch(function (error) {
             console.log(error)
         })

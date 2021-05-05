@@ -1,0 +1,59 @@
+{
+    "Print to console": {
+       "scope": "javascript,typescript, vue",
+        "prefix": "log",
+        "body": [
+            "console.log()"
+        ],
+        "description": "Log output to console"
+    },
+
+    "Base component panel": {
+       "scope": "vue",
+        "prefix": "start",
+        "body": [
+            
+"<template>",
+   "<div>",
+       "<div class='panel'>",
+           "<div class='panel-item font-medium' @click='body_'>",
+               
+           "</div>",
+           "<div class='panel-item' v-show='body'>",
+               
+           "</div>",
+       "</div>",
+   "</div>",
+"</template>",
+
+"<script>",
+"import useBody from '@/api/useBody.js'",
+"import Multiselect from '@vueform/multiselect'",
+"import { computed, watchEffect, ref, reactive } from 'vue'",
+"import { useStore } from 'vuex'",
+   "export default {",
+       "props: {",
+           "modelValue: {",
+               "type: Array,",
+               "default: []",
+           "}",
+       "},",
+       "setup(props, { emit }) {",
+           "const store = useStore()",
+
+
+           "watchEffect(() => emit('update:modelValue', props.modelValue))",
+         "return{",
+             "...useBody()",
+         "}  ",
+       "}",
+   "}",
+"</script>",
+
+"<style lang='scss' scoped>",
+
+"</style>"
+        ],
+        "description": "Start"
+    }
+}

@@ -4,17 +4,17 @@ export default {
     },
     getters: {
         product: state => {
-            return state.product;
+            return state.product
         }
     },
     mutations: {
         setProduct(state, payload) {
-            state.product = payload;
+            state.product = payload
         }
     },
     actions: {
-        getProduct({commit}, payload) {
-            commit('setProduct', payload);
+        getProduct({ commit }, payload) {
+            commit('setProduct', payload)
         }
     }
-};
+}

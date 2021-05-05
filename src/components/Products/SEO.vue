@@ -9,7 +9,7 @@
             <div class="mb-3">
                 <label class="label">Название страницы</label>
                 <div class="mt-1">
-                    <input type="text" :value="title"  @input="$emit('update:title', $event.target.value)"  class="input"  />
+                    <input :placeholder="p_title" type="text" :value="title"  @input="$emit('update:title', $event.target.value)"  class="input"  />
                 </div>
                 <p :class="`mt-2 text-sm text-${SizeCheck_color(title, 70)}-500`">
                     {{ title.length + ' из ' +  ' 70 ' + ' использовано' }}</p>
