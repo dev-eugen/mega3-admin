@@ -1,7 +1,7 @@
 <template>
     <div class="panel">
         <div class="panel-item flex justify-between items-center font-medium">
-            Статус продукта
+            Статус
             <Listbox class="float-right" as="div" v-model="selected">
                 <ListboxLabel class="sr-only">
                     Изменить опубликованный статус
@@ -24,7 +24,7 @@
                     <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100"
                         leave-to-class="opacity-0">
                         <ListboxOptions
-                            class="z-50 origin-top-right absolute right-0 mt-2 w-72 rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            class="z-20 origin-top-right absolute right-0 mt-2 w-72 rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <ListboxOption as="template" v-for="option in publishingOptions" :key="option.title"
                                 :value="option" v-slot="{ active, selected }">
                                 <li
@@ -54,28 +54,41 @@
 
 <script>
     import {
-        ref
+        ref, watchEffect
     } from 'vue'
     const publishingOptions = [{
             title: 'Активный',
             description: 'Этот товар будет доступен для всех каналов продаж.',
-            current: true
+            current: true,
+            option: 'on_display'
         },
         {
             title: 'Черновик',
             description: 'Этот товар не будет доступен для всех каналов продаж.',
-            current: false
+            current: false,
+            option: 'draft'
         },
         {
             title: 'Архивный',
             description: 'Этот товар не будет доступен для всех каналов продаж.',
-            current: false
+            current: false,
+            option: 'archive'
+        },
+         {
+            title: 'Невидимый',
+            description: 'Этот товар не будет видим для всех каналов продаж.',
+            current: false,
+            option: 'not_on_display'
         },
     ]
 
     export default {
-        setup() {
+        setup(props, { emit }) {
             const selected = ref(publishingOptions[0])
+
+            watchEffect(() => emit('change', selected.value.option))
+
+
 
             return {
                 publishingOptions,

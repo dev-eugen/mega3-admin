@@ -183,7 +183,7 @@
 
               <div>
                 <button
-                  @click="signIn"
+                  @click="login(email, password)"
                   class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Sign in
@@ -207,43 +207,16 @@
 
 
 <script>
-import axios from 'axios'
-import {ref} from 'vue'
-import { useStore } from 'vuex'
+import { login } from '@/models/user.js'
+import { ref } from 'vue'
 export default {
   setup(props) {
     const email = ref('')
     const password = ref('')
-    const store = useStore()
 
-    const signIn = () => {
-      let FormData = require("form-data");
-      let data = new FormData();
-      data.append("username", email);
-      data.append("password", password);
-      data.append("client_id", "4");
-      data.append("client_secret", "yh8cPXWFgLgXiMMFHj3HSfElgA6FrWBjSyyMZ4m7");
-      data.append("grant_type", "password");
 
-      var config = {
-        method: "post",
-        url: "https://api.mega3.uk/v1/oauth/token",
-        headers: {
-          Accept: "application/json"
-        },
-        data: data
-      };
-
-      axios(config)
-        .then((r) => (localStorage.access_token = r.data.access_token))
-        //.then(() => store.dispatch("user/getUser", "/"))
-        .catch(function(error) {
-         console.log(error);
-       });
-
-    }
     
-    return { email, password, signIn }
+    return { email, password, login }
   }
 };
 </script>

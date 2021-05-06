@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from "@/store"
 const routes = [
   {
     path: '/',
@@ -8,10 +9,20 @@ const routes = [
       layout: 'menu',
     }, 
   },
+  // * Ptoducts
+
   {
     path: '/products/new',
     name: 'productnew',
     component: () => import("@/views/Products/NewProduct.vue"),
+    meta: {
+      layout: 'menu',
+    }, 
+  },
+  {
+    path: '/product/:id',
+    name: 'productedit',
+    component: () => import("@/views/Products/EditProduct.vue"),
     meta: {
       layout: 'menu',
     }, 
@@ -24,6 +35,28 @@ const routes = [
       layout: 'menu',
     }, 
   },
+
+  // * Collections
+  {
+    path: '/collections',
+    name: 'product-collections',
+    component: () => import("@/views/Collections/Collections.vue"),
+    meta: {
+      layout: 'menu',
+    }
+  },
+
+  {
+    path: '/collections/new',
+    name: 'product-collections-new',
+    component: () => import("@/views/Collections/NewCollection.vue"),
+    meta: {
+      layout: 'menu',
+    }
+  },
+
+
+  // * Setting
   {
     path: '/profile',
     name: 'profile',
@@ -49,15 +82,7 @@ const routes = [
       layout: 'setting',
     }, 
   },
-  {
-
-    path: '/signin',
-    name: 'signin',
-    component: () => import("@/views/Signin.vue"),
-    meta: {
-      layout: 'empty',
-    }, 
-  },
+  
   {
     path: '/notification',
     name: 'notification',
@@ -90,11 +115,40 @@ const routes = [
       layout: 'setting',
     }, 
   },
+
+  // * auth
+
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import("@/views/Signin.vue"),
+    meta: {
+      layout: 'empty',
+    }, 
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+ router.beforeEach(async (to, from, next) => {
+   if (to.fullPath != "/login") {
+     if (store.state.user.first) {
+       await store.dispatch("user/getUser", to.fullPath);
+       store.commit("user/setFirst", false);
+     } else {
+        if (store.state.user.auth && localStorage.access_token != null) {
+          return next()
+          
+        }
+        return next("/login");
+          
+     }
+   } 
+    return next();
+});
+
 
 export default router

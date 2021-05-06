@@ -60,7 +60,7 @@ import axios from "@/libs/axios.js"
         setup() {
             const store = useStore()
             const state = reactive({
-                more: true,
+                more: false,
                 parent_id: 0,
                 r_categories: false,
                 selected: null
