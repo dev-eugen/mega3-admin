@@ -24,7 +24,7 @@
                             </select>
                         </div>
                         <div class="col-span-4">
-                            <input v-model="modelValue[i].value" type="text" class="input">
+                            <input v-model="modelValue[i].value" :type="modelValue[i].condition == 'VARIANT_PRICE' || modelValue[i].condition == 'VARIANT_COMPARE_AT_PRICE' || modelValue[i].condition == 'VARIANT_WEIGHT'|| modelValue[i].condition == 'VARIANT_COMPARE_AT_PRICE' || modelValue[i].condition == 'VARIANT_INVENTORY' ? 'number' : 'text' " class="input">
                         </div>
                         <div v-if="modelValue.length > 1" class="col-span-1">
                             <button type="button" @click="delCondition(i)"

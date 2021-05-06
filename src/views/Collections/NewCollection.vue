@@ -51,7 +51,7 @@
                                 </RadioGroup>
                             </div>
                         </div>
-                        <Conditions v-model="conditions" />
+                        <Conditions v-if="automatic" v-model="conditions" />
                         <SEO v-model:keywords="seo.keywords" v-model:title="seo.title"
                             v-model:description="seo.description" v-model:p_title="title"
                             v-model:p_description="descriptionHtml" />

@@ -1,5 +1,5 @@
-import axios from "@/libs/axios.js";
-import router from "@/router";
+import axios from "@/libs/axios.js"
+import router from "@/router"
 export default {
   namespaced: true,
   state: {
@@ -12,24 +12,24 @@ export default {
   },
   getters: {
     user: (state) => {
-      return state.user;
+      return state.user
     },
     auth: (state) => {
-      return state.auth;
+      return state.auth
     },
   },
   mutations: {
     setFirst: (state, bool) => {
-      state.first = bool;
+      state.first = bool
     },
     setUser: (state, user) => {
-      state.user = user;
+      state.user = user
     },
     setAuth: (state, bool) => {
       if (!bool) {
-        router.push({ name: "login" });
+        router.push({ name: "login" })
       }
-      state.auth = bool;
+      state.auth = bool
     },
   },
   actions: {
@@ -38,17 +38,17 @@ export default {
         axios.get('user/profile')
           .then((r) => {
             if (r !== null && r !== undefined) {
-              commit("setUser", r.data.data);
-              commit("setAuth", true);
-              router.push(route);
+              commit("setUser", r.data.data)
+              commit("setAuth", true)
+              router.push(route)
             } else {
-              commit("setAuth", false);
-              router.push({ name: "login" });
+              commit("setAuth", false)
+              router.push({ name: "login" })
             }
-          });
+          })
       } else {
-        commit("setAuth", false);
+        commit("setAuth", false)
       }
     },
   },
-};
+}

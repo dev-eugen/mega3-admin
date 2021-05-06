@@ -119,8 +119,8 @@ const routes = [
   // * auth
 
   {
-    path: '/signin',
-    name: 'signin',
+    path: '/login',
+    name: 'login',
     component: () => import("@/views/Signin.vue"),
     meta: {
       layout: 'empty',
@@ -139,15 +139,16 @@ const router = createRouter({
        await store.dispatch("user/getUser", to.fullPath);
        store.commit("user/setFirst", false);
      } else {
-       if (store.state.user.auth && localStorage.access_token != null) {
-         next();
-       } else {
-         next("/login");
-       }
+        if (store.state.user.auth && localStorage.access_token != null) {
+          return next()
+          
+        }
+        return next("/login");
+          
      }
-   } else {
-     next();
-   }
+   } 
+    return next();
 });
+
 
 export default router
