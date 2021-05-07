@@ -26,7 +26,7 @@
                     </div>
                     <input type="text"  class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md" placeholder="Поиск по колекциям" />
                 </div>    
-                <select  class="m-1 select w-2/12">
+                <select  class="m-1 select-w w-2/12">
                 <option :value="null">
                     Статус
                 </option>
@@ -37,12 +37,12 @@
                     Не активно
                 </option>
                 </select>  
-                <select  class="m-1 select w-2/12">
+                <select  class="m-1 select-w w-2/12">
                     <option :value="null">Тип</option>
                     <option :value="true">Автоматические</option>
                     <option :value="false">Ручные</option>
                 </select>   
-                <select  class="m-1 select w-2/12">
+                <select  class="m-1 select-w w-2/12">
                     <option :value="null">Название А-Я</option>
                     <option :value="null">Название Я-А</option>
                     <option :value="true">Дата возрастание</option>
