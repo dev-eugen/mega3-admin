@@ -99,7 +99,7 @@ import Conditions from '../../components/Products/Collections/Conditions.vue'
                 staus: true,
                 conditions: [
                     {
-                        consdition: null,
+                        condition: null,
                         action: null,
                         value: null
                     }
@@ -115,7 +115,7 @@ import Conditions from '../../components/Products/Collections/Conditions.vue'
 
 
             return {
-                ...toRefs(collection), settings
+                ...toRefs(collection), collection, settings
             }
         },
     }

@@ -54,7 +54,7 @@
             <thead class="bg-gray-50">
               <tr>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Name
+                  Название
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Условия
@@ -62,42 +62,39 @@
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Статус
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Role
-                </th>
                 <th scope="col" class="relative px-6 py-3">
                   <span class="sr-only">Edit</span>
                 </th>
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="person in people" :key="person.email">
+              <tr v-for="(collection, i) in collections" :key="i">
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
-                    <div class="flex-shrink-0 h-10 w-10">
-                      <img class="h-10 w-10 rounded-full" :src="person.image" alt="" />
+                    <div class="flex items-center justify-center">
+                        <div class="flex justify-center items-center h-12 w-12 rounded-md overflow-hidden">
+                            <img class="min-h-12 min-w-12" :src="collection.media[0].url">
+                        </div>
                     </div>
                     <div class="ml-4">
                       <div class="text-sm font-medium text-gray-900">
-                        {{ person.name }}
+                        {{ collection.title }}
                       </div>
-                      <div class="text-sm text-gray-500">
-                        {{ person.email }}
-                      </div>
+                      <!-- <div class="text-sm text-gray-500">
+                        {{ collection.email }}
+                      </div> -->
                     </div>
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">{{ person.title }}</div>
-                  <div class="text-sm text-gray-500">{{ person.department }}</div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Active
-                  </span>
+                  <div v-for="(con, i) in collection.conditions" :key="i"  class="text-sm text-gray-500">
+                    {{ getFullCond(con.condition, con.action) + ' ' + con.value}}
+                  </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {{ person.role }}
+                  <Switch v-model="collection.status" :class="[collection.status ? 'bg-indigo-600' : 'bg-gray-200', 'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500']">
+                    <span aria-hidden="true" :class="[collection.status ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200']" />
+                  </Switch>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
@@ -111,6 +108,8 @@
 </template>
 
 <script>
+import { getFullCond } from "@/services/Collections.js"
+import collections from "@/data/collections.js"
 import { reactive, toRefs } from 'vue'
 
 export default {
@@ -120,7 +119,7 @@ export default {
         })
     
         return {
-            ...toRefs(state),
+            ...toRefs(state), collections, getFullCond
         }
     }
 }
