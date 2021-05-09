@@ -388,12 +388,18 @@ export default {
         current: route.name.slice(0, 8) == "billing",
       },
       {
+        name: "Company",
+        href: "company",
+        icon: ViewGridAddIcon,
+        current: route.name.slice(0, 6) == "Company",
+      },
+      {
         name: "Social",
         href: "social",
         icon: ViewGridAddIcon,
         current: route.name.slice(0, 6) == "Social",
       },
-      
+     
       
     ])
 

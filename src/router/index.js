@@ -115,6 +115,14 @@ const routes = [
       layout: 'setting',
     }, 
   },
+  {
+    path: '/company',
+    name: 'company',
+    component: () => import("@/views/User/Company.vue"),
+    meta: {
+      layout: 'setting',
+    }, 
+  },
 
   // * auth
 
