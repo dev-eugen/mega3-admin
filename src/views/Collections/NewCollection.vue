@@ -76,10 +76,10 @@ const settings = [
         ref,
         reactive,
         toRefs
-    } from "vue";
+    } from "vue"
     import {
         useStore
-    } from "vuex";
+    } from "vuex"
 import Conditions from '../../components/Products/Collections/Conditions.vue'
     export default {
         props: {},
@@ -89,16 +89,17 @@ import Conditions from '../../components/Products/Collections/Conditions.vue'
         setup(props, {
             emit
         }) {
-            const store = useStore();
+            const store = useStore()
 
             const collection = reactive({
                 title: '',
                 descriptionHtml: '',
                 automatic: false,
                 media: [],
+                staus: true,
                 conditions: [
                     {
-                        consdition: null,
+                        condition: null,
                         action: null,
                         value: null
                     }
@@ -114,9 +115,9 @@ import Conditions from '../../components/Products/Collections/Conditions.vue'
 
 
             return {
-                ...toRefs(collection), settings
+                ...toRefs(collection), collection, settings
             }
         },
-    };
+    }
 </script>
 <style lang="scss" scoped></style>

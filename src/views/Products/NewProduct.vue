@@ -62,6 +62,8 @@
                     <div class="transform duration-150 ease-out">
                         <Status @change="status_change" />
                         <Categories />
+                        <Collections v-if="products.length == 1" v-model="products[0].collections" />
+                        <Collections v-else v-model="collections" />
                         <Tags v-if="products.length == 1" v-model="products[0].tags" />
                         <Tags v-else v-model="tags" />
                     </div>
@@ -108,6 +110,7 @@
     import Variant from '@/components/Products/Variants.vue'
     import Options from '@/components/Products/Options.vue'
     import Tags from '@/components/Products/Tags.vue'
+    import Collections from '@/components/Products/Collections.vue'
     import useVariants from "@/api/useVariants.js"
     import {
         reactive,
@@ -126,7 +129,7 @@
             ImageUploader,
             Categories,
             Prices,
-            Tags
+            Tags, Collections
         },
         setup(props) {
 
@@ -138,6 +141,7 @@
                 prices: [],
                 cost: 0.00,
                 tags: [],
+                collections: [],
                 options: [{
                         label: 'Размер',
                         options: ['XS', 'XL', 'S', 'M', 'L']

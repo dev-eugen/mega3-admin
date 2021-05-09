@@ -89,6 +89,7 @@ export default function useVariants(props, group_product) {
             prices: [],
             sku: '',
             barcode: '',
+            collections: [],
             tags: [],
             images: [{
                 url: 'https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg',

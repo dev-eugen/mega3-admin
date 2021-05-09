@@ -5,7 +5,7 @@
                 Теги {{ scnd_placaholder }}
             </div>
             <div class="panel-item" v-show="body">
-                <Multiselect v-model="modelValue" :options="tags"  :searchable="true" mode="tags"/>
+                <Multiselect :caret="false" v-model="modelValue" :placeholder="tags[0] + ', ' + tags[1]" :options="tags"  :searchable="true" mode="tags"/>
             </div>
         </div>
     </div>
