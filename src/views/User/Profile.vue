@@ -1,6 +1,7 @@
 <template>
   <form class="divide-y divide-gray-200 lg:col-span-9" action="#" method="POST">
     <!-- Profile section -->
+   
     <div class="py-6 px-4 sm:p-6 lg:pb-8">
       <div>
         <h2 class="text-lg leading-6 font-medium text-gray-900">
@@ -215,9 +216,11 @@
    
    <a href="/profile">Указать номер телефона </a>
   </div>
+  <div class="flex justify-start mt-4" >
+  <button class="bg-indigo-600 text-white rounded h-8 w-16 hover:bg-indigo-800 mt-4">Save</button>
         </div>
       </div>
-      
+      </div>
       
     </div>
   </form>
