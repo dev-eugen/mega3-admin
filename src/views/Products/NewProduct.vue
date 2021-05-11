@@ -61,7 +61,7 @@
                 <transition appear enter-active-class="opacity-0 translate-y-12">
                     <div class="transform duration-150 ease-out">
                         <Status @change="status_change" />
-                        <Categories />
+                        <Categories @categoryChange="categoryChange" />
                         <Collections v-if="products.length == 1" v-model="products[0].collections" />
                         <Collections v-else v-model="collections" />
                         <Tags v-if="products.length == 1" v-model="products[0].tags" />
@@ -141,6 +141,7 @@
                 prices: [],
                 cost: 0.00,
                 tags: [],
+                category: null,
                 collections: [],
                 options: [{
                         label: 'Размер',
@@ -230,6 +231,7 @@
                         title: '',
                         descriptionHtml: '',
                         tags: [],
+                        category: null,
                         status: '',
                         options: [{
                                 label: 'Размер',
@@ -282,12 +284,19 @@
 
             })
 
+            const categoryChange = (id) => {
+                group_product.category = id
+                group_product.products.forEach(e => {
+                    e.category = id
+                })
+            }
+
 
 
            const {  clearUserOptions, clearOptions, delVariant, addVariant, status_change, applyAll } = useVariants(props, group_product)
 
             return {
-                ...toRefs(group_product),
+                ...toRefs(group_product), categoryChange,
                 delVariant,
                 addVariant,
                 clearOptions,

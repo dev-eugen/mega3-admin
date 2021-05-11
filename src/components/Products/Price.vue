@@ -6,7 +6,7 @@
             </div>
             <div class="panel-item" v-show="body">
                 <label class="label">
-                    Цена
+                    Цена (розничная)
                 </label>
                 <div class="mt-1 mb-2 flex rounded-md shadow-sm">
                     <span  class="input-append-span">

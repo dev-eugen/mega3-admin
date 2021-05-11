@@ -7,6 +7,9 @@
         <transition appear enter-active-class="opacity-0 -translate-y-12 " leave-active-class="opacity-0 -translate-y-12 ">
             <div class="panel-item transform duration-100 ease-out" v-show="more">
                 <ul class="divide-y divide-gray-200">
+                    <li  class="px-4 py-4 sm:px-0 flex justify-between">
+                        <input v-model="search" type="text" class="input">
+                    </li>
                     <li  v-if="parent_id != 0" class="px-4 py-4 sm:px-0 flex justify-between">
                         Назад
                         <div>
@@ -25,7 +28,7 @@
                             class="inline-flex items-center px-1 rounded-3xl text-sm font-medium bg-indigo-100 text-indigo-600 hover:bg-indigo-200 hover:text-indigo-800">
                             <ChevronRightIcon v-if="isLast(category.id)" class="h-5 w-5" @click="up(category.id)" />
                             <MinusIcon v-else-if="category.id === selected?.id" class="h-5 w-5" @click="selected = null" />
-                            <PlusIcon v-else class="h-5 w-5" @click="selected = category" />
+                            <PlusIcon v-else class="h-5 w-5" @click="change(category)" />
                         </span>
                     </li>
                 </ul>
@@ -57,10 +60,11 @@
 
 import axios from "@/libs/axios.js"
     export default {
-        setup() {
+        setup(props, { emit }) {
             const store = useStore()
             const state = reactive({
                 more: false,
+                search: '',
                 parent_id: 0,
                 r_categories: false,
                 selected: null
@@ -91,12 +95,22 @@ import axios from "@/libs/axios.js"
                 return r?.id !== undefined
             }
 
+
+            const change = (s) => {
+                state.selected = s
+                emit('categoryChange', s.id)
+            }
+
+            const categories = computed(() => {
+                let r = state.r_categories.filter(e => e.parent_id == state.parent_id)
+                return r.filter(c => c.name.toLowerCase().includes(state.search) || c.name.includes(state.search))
+            })
+
             
 
 
             return {
-                ...toRefs(state), up, level, back, isLast, 
-                categories: computed(() => state.r_categories.filter(e => e.parent_id == state.parent_id)),
+                ...toRefs(state), up, level, back, isLast, change, categories
                 
             }
         },

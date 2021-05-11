@@ -18,8 +18,8 @@ export function login(email, password) {
     }
 
     axios(config)
-        .then((r) => (localStorage.access_token = r.data.access_token))
-        .then(() => store.dispatch("user/getUser", "profile"))
+        .then(async (r) => (localStorage.access_token = await r.data.access_token))
+        .then(() => store.dispatch("user/getUser", "/products/new"))
         .catch(function (error) {
             console.log(error)
         })
