@@ -301,7 +301,7 @@
                 addVariant,
                 clearOptions,
                 clearUserOptions,
-                status_change, applyAll
+                status_change, applyAll, group_product
             }
         }
     }
