@@ -19,7 +19,6 @@
         <div class="col-span-12 sm:col-span-6">
           <label for="first_name" class="label">Название компании*</label>
           <input type="text" v-model="companyName" class="input" />
-        
         </div>
 
         <div class="col-span-12 sm:col-span-6">
@@ -29,7 +28,13 @@
 
         <div class="col-span-12">
           <label for="url" class="label">Контактное лицо*</label>
-          <input type="text" name="url" id="url" class="input" v-model="contactData" />
+          <input
+            type="text"
+            name="url"
+            id="url"
+            class="input"
+            v-model="contactData"
+          />
         </div>
       </div>
     </div>
@@ -68,174 +73,92 @@
             Настройте и сохраните личную информацию
           </p>
         </div>
+      <div><button class="bg-indigo-600 rounded hover:bg-indigo-700 h-8 w-24 text-white "  @click="addItem"  > Добавить</button></div>
       </div>
     </div>
     <div class="py-6 px-4 sm:p-6 lg:pb-8">
       <div>
         <h2 class="text-lg leading-6 font-medium text-gray-900">
-          Настройки интерфейса
+          Другие виды связи
         </h2>
-        <p class="mt-1 text-sm text-gray-500">Настройки языка и темы</p>
-      </div>
-
-      <div class="mt-6 flex flex-col lg:flex-row">
-        <div class="flex-grow space-y-6"></div>
       </div>
 
       <div class="mt-6 grid grid-cols-12 gap-6">
         <div class="col-span-12 sm:col-span-6">
-          <label for="first_name" class="label">Язык интерфейса</label>
-
-          <select
-            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-          >
-            <option>UA</option>
-            <option selected="">RU</option>
-            <option>EN</option>
-          </select>
-        </div>
-
-        <div class="col-span-12 sm:col-span-6">
-          <label for="last_name" class="label">Тема</label>
-          <select
-            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-          >
-            <option>Light</option>
-            <option selected="">Dark</option>
-            <option>Color</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="py-4 px-4 sm:p-6 lg:pb-8">
-      <div>
-        <h2 class="text-lg leading-6 font-medium text-gray-900">Уведомления</h2>
-        <p class="mt-2 text-sm text-gray-500">
-          Настройка уведомлений и рассылок
-        </p>
-      </div>
-
-      <div class="mt-6 grid grid-cols-12 gap-6">
-        <div class="col-span-12 sm:col-span-6">
-          <fieldset>
-            <div class="space-y-4">
-              <div class="flex items-start">
-                <div class="h-5 flex items-center">
-                  <input
-                    id="comments"
-                    name="comments"
-                    type="checkbox"
-                    class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                  />
-                </div>
-                <div class="ml-3 text-sm">
-                  <label for="comments" class="font-medium text-gray-700"
-                    >Получать статистику Google Ads</label
-                  >
-                  <p class="text-gray-500">
-                    Get notified when someones posts a comment on a posting.
-                  </p>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-start">
-                  <div class="h-5 flex items-center">
-                    <input
-                      id="candidates"
-                      name="candidates"
-                      type="checkbox"
-                      class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                    />
-                  </div>
-                  <div class="ml-3 text-sm">
-                    <label for="candidates" class="font-medium text-gray-700"
-                      >Получать статистику сайта</label
-                    >
-                    <p class="text-gray-500">
-                      Get notified when a candidate applies for a job.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div></div>
+          <Menu as="div" class="relative text-left">
+            <div>
+              <MenuButton
+                class="flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              >
+                Выберите социальную сеть
+                <ChevronDownIcon
+                  class="-mr-1 ml-2 h-5 w-5"
+                  aria-hidden="true"
+                />
+              </MenuButton>
             </div>
-          </fieldset>
-        </div>
-      </div>
-    </div>
-    <div class="py-4 px-4 sm:p-6 lg:pb-8">
-      <div>
-        <h2 class="text-lg leading-6 font-medium text-gray-900">
-          Уведомления в СМС и Viber
-        </h2>
-        <p class="mt-2 text-sm text-gray-500">
-          Настройка уведомлений и рассылок
-        </p>
-      </div>
 
-      <div class="mt-6 grid grid-cols-12 gap-6">
-        <div class="col-span-12 sm:col-span-6">
-          <Switch
-            v-model="enabled"
-            :class="[
-              enabled ? 'bg-indigo-600' : 'bg-gray-200',
-              'relative inline-flex flex-shrink-0 h-8 w-20 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
-            ]"
-          >
-            <span class="sr-only">Use setting</span>
-            <span
-              :class="[
-                enabled ? 'translate-x-12' : 'translate-x-0',
-                'pointer-events-none relative inline-block h-7 w-7 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200',
-              ]"
+            <transition
+              enter-active-class="transition ease-out duration-100"
+              enter-from-class="transform opacity-0 scale-95"
+              enter-to-class="transform opacity-100 scale-100"
+              leave-active-class="transition ease-in duration-75"
+              leave-from-class="transform opacity-100 scale-100"
+              leave-to-class="transform opacity-0 scale-95"
             >
-              <span
-                :class="[
-                  enabled
-                    ? 'opacity-0 ease-out duration-100'
-                    : 'opacity-100 ease-in duration-200',
-                  'absolute inset-0 h-full w-full flex items-center justify-center transition-opacity',
-                ]"
-                aria-hidden="true"
+              <MenuItems
+                class="origin-top-right  right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
-                <svg
-                  class="bg-white h-3 w-3 text-gray-400"
-                  fill="none"
-                  viewBox="0 0 12 12"
-                >
-                  <path
-                    d="M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </span>
-              <span
-                :class="[
-                  enabled
-                    ? 'opacity-100 ease-in duration-200'
-                    : 'opacity-0 ease-out duration-100',
-                  'absolute inset-0 h-full w-full flex items-center justify-center transition-opacity',
-                ]"
-                aria-hidden="true"
-              >
-                <svg
-                  class="bg-white h-3 w-3 text-indigo-600"
-                  fill="currentColor"
-                  viewBox="0 0 12 12"
-                >
-                  <path
-                    d="M3.707 5.293a1 1 0 00-1.414 1.414l1.414-1.414zM5 8l-.707.707a1 1 0 001.414 0L5 8zm4.707-3.293a1 1 0 00-1.414-1.414l1.414 1.414zm-7.414 2l2 2 1.414-1.414-2-2-1.414 1.414zm3.414 2l4-4-1.414-1.414-4 4 1.414 1.414z"
-                  />
-                </svg>
-              </span>
-            </span>
-          </Switch>
-          <div class="text-gray-500 text-sm hover:text-gray-700 mt-1">
-            <a href="/profile">Указать номер телефона </a>
-          </div>
+                <div class="py-1">
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        'block px-4 py-2 text-sm',
+                      ]"
+                      >Skype</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        'block px-4 py-2 text-sm',
+                      ]"
+                      >ICQ</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        'block px-4 py-2 text-sm',
+                      ]"
+                      >WhatsApp</a
+                    >
+                  </MenuItem>
+                  <form method="POST" action="#">
+                    <MenuItem v-slot="{ active }">
+                      <button
+                        type="submit"
+                        :class="[
+                          active
+                            ? 'bg-gray-100 text-gray-900'
+                            : 'text-gray-700',
+                          'block w-full text-left px-4 py-2 text-sm',
+                        ]"
+                      >
+                        Сайт компании
+                      </button>
+                    </MenuItem>
+                  </form>
+                </div>
+              </MenuItems>
+            </transition>
+          </Menu>
         </div>
       </div>
     </div>
@@ -247,15 +170,8 @@ import { ref } from "vue";
 import { computed } from "vue";
 import { useStore } from "vuex";
 
-const user = {
-  name: "Debbie Lewis",
-  handle: "deblewis",
-  email: "debbielewis@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=320&h=320&q=80",
-};
 
-const email = "";
+
 const contactData = "";
 const companyName = "";
 const numberUser = "";
@@ -274,8 +190,13 @@ export default {
       default: "",
     },
   },
+  
+
+  
+ 
 
   setup() {
+    const email = ref();
     const store = useStore();
     const open = ref(false);
     const availableToHire = ref(true);
@@ -283,6 +204,7 @@ export default {
     const allowCommenting = ref(true);
     const allowMentions = ref(true);
     const enabled = ref(true);
+    
 
     return {
       count: computed(() => store.state.user.user),
@@ -299,7 +221,23 @@ export default {
       email,
       contactData,
       companyName,
+    
+     items: [
+        {id: 1, title: 'Musor'},
+      {id: 2, title: 'Musor2'},
+
+      ]
+
     };
+    
+  },
+   methods:{
+  addItem: function(){
+    this.items.push({
+      id: this.nextItemsiId,
+      title: this.newItemsText
+    })
+  }
   },
 };
 </script>
